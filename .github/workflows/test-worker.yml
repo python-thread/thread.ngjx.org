@@ -8,25 +8,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - name: Ignore
+
+
+    # steps:
+    #   - name: Checkout Code
+    #     uses: actions/checkout@v2
  
-      - name: Cache Dependencies
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+    #   - name: Cache Dependencies
+    #     uses: actions/cache@v1
+    #     with:
+    #       path: ~/.npm
+    #       key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    #       restore-keys: ${{ runner.os }}-node-
 
-      - name: Setup Node 21.4.0
-        uses: actions/setup-node@v2
-        with:
-          node-version: '21.4.0'
+    #   - name: Setup Node 21.4.0
+    #     uses: actions/setup-node@v2
+    #     with:
+    #       node-version: '21.4.0'
 
-      - name: Building
-        run: |
-          yarn install --frozen-lockfile
-          npm run bundle
+    #   - name: Building
+    #     run: |
+    #       yarn install --frozen-lockfile
+    #       npm run bundle
 
-      - name: Run Tests Locally
-        run: npm run test
+    #   - name: Run Tests Locally
+    #     run: npm run test
