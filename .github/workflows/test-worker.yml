@@ -1,13 +1,10 @@
-name: Run tests
+name: Run Tests
 
-on:
-  push:
-    tags-ignore:
-      - '**'
+on: [ push ]
 
 
 jobs:
-  testing:
+  linting:
     name: Run tests
     runs-on: ubuntu-latest
 
