@@ -1,4 +1,9 @@
 {
-  "docs": "Documentation",
-  "about": "about"
+  "index": {
+    "title": "thread",
+    "theme": {
+      "layout": "full",
+      "typesetting": "article"
+    }
+  }
 }
