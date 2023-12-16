@@ -1,4 +1,8 @@
-name: Deploy to vercel
+name: Deploy to Production
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 
 on:
@@ -9,53 +13,21 @@ on:
 
 
 jobs:
-  vercel:
+  Deploy-Production:
+    name: Deploying
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
- 
-      - name: Cache Dependencies
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+      - uses: actions/checkout@v2
 
-      - name: Setup Node 21.4.0
-        uses: actions/setup-node@v2
-        with:
-          node-version: '21.4.0'
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
 
-      - name: Building
-        run: |
-          yarn install --frozen-lockfile
-          npm run bundle
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Run Tests Locally
-        run: npm run test
-
-      - name: Deploy to Staging
-        id: deploy-vercel-staging
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_TL_ENGINE }}
-          scope: ${{ secrets.VERCEL_ORG_ID }}
-
-      - name: Run Tests Against Vercel ...
-        env:
-          VERCEL_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
-        run: npm run test
-
-      - name: Deploy to Production ...
-        uses: amondnet/vercel-action@v20
-        id: deploy-vercel-production
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_TL_ENGINE }}
-          vercel-args: '--prod'
-          scope: ${{ secrets.VERCEL_ORG_ID }}
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
