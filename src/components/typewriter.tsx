@@ -1,7 +1,7 @@
 'use client'
 import { TypeAnimation } from 'react-type-animation'
 
-export default () => {
+export const PackageManager = () => {
   return (
     <TypeAnimation
       sequence = {[
