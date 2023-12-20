@@ -1,10 +1,17 @@
-# We're working to get documentation up soon!
-Thanks for stopping by!
-
-### In the meantime
-Try out thread!
-
+---
+title: Thread
+---
 
 import { PackageManager } from '@components/typewriter'
 
-<PackageManager />
+export function Title({ content }) {
+    return (
+        <h1 className="text-2xl">{ content } </h1>
+    )
+}
+
+<div>
+    <Title content="Thread"></Title>
+
+    <PackageManager />
+</div>

@@ -1,9 +1,14 @@
 {
   "index": {
-    "title": "thread",
+    "type": "page",
+    "title": "Thread",
+    "display": "hidden",
     "theme": {
-      "layout": "full",
-      "typesetting": "article"
+      "layout": "full"
     }
+  },
+  "docs": {
+    "type": "page",
+    "title": "Documentation"
   }
 }
