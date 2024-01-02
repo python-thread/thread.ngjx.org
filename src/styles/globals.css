@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --text: #0A060F;
+  --background: #F3EFFB;
+  --primary: #5E24DB;
+  --secondary: #A17AF5;
+  --accent: #8243FE;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --text: #F4F0F9;
+    --background: #080410;
+    --primary: #5E24DB;
+    --secondary:#310A85;
+    --accent: #3F01BC;
   }
 }
 
