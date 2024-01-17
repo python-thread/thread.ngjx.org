@@ -19,8 +19,3 @@
     --accent: #3F01BC;
   }
 }
-
-body {
-  background: var(--background);
-  background: linear-gradient(225deg, var(--background) 80%, var(--primary) 100%);
-}
