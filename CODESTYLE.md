@@ -11,12 +11,24 @@ the codebase remains consistent.
 
 
 ## Table of Contents
- - [Code Formatting](asdfdsa)
+ - [Indentation](#indentation)
+ - [Commit Message Guidelines](#commit-message-guidelines)
 
 
 ## Indentation
-It is generally recommended that you indent using 2 spaces, instead of 4.
+It is generally recommended that you indent using 2 spaces, instead of 4. So make sure that you change your code editor to align with these desires :)
 
+```Javascript
+/** Example */
+<div className="text-red-600">
+  <ul>
+    <li>example item</li>
+    <li>example item</li>
+    <li>example item</li>
+    <li>example item</li>
+  </ul>
+</div>
+```
 
 ## Commit Message Guidelines
 When committing, commit messages are prefixed with a `+` or `-`. Depending on the type of change made 
@@ -35,6 +47,5 @@ git commit -m "Moved README.md"
 ```
 
 
-## Documentation
 
 
