@@ -106,10 +106,13 @@ Documentation with MDX is quite similar to regular markdown, as it just Markdown
  - [reference style links](https://www.markdownguide.org/basic-syntax/#reference-style-links) 
  are not required by are appreciated
  - Exceedingly long lines are to be broken (we prefer around 80 characters)
- - The indents are to be two spaces 
+ - The indents are to be two spaces
+ - Imports of react components used in the MDX files are to be put at the top of the file 
 
-```markdown
-<!--example markdown document-->
+```
+/* Example MDX Document */
+import { ExampleComponent } from '@components/examples'
+
 # Section
 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore 
