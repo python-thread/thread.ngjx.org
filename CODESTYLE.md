@@ -13,6 +13,7 @@ the codebase remains consistent.
 ## Table of Contents
  - [Indentation](#indentation)
  - [Commit Message Guidelines](#commit-message-guidelines)
+ - [Documentation and Commenting](#documentation-and-commenting)
 
 
 ## Indentation
@@ -45,6 +46,7 @@ git commit -m "+ Added README.md"
 git commit -m "- Removed README.md"
 git commit -m "Moved README.md"
 ```
+
 
 ## Documentation and Commenting
 Here are some guidelines to keep the commenting of website consistent.
