@@ -46,6 +46,44 @@ git commit -m "- Removed README.md"
 git commit -m "Moved README.md"
 ```
 
+## Documentation and Commenting
+Here are some guidelines to keep the commenting of website consistent.
 
+### React and JavaScript
+```javascript
+/** Utilizing multiline comments are good */
+// since line comments as well
+```
+
+With React components it is fine to comment components in the following manner.
+
+```javascript
+function HomePage() {
+  return (
+    <div>
+      {/* Nesting the Header component */}
+      <Header />
+    </div>
+  );
+}
+```
+
+### HTML & CSS
+As for HTML and CSS, feel free to utilize the follow styles.
+```HTML
+<!-- make sure to include before and after the comment as seen here -->
+<!--
+This is a
+Multiline comment
+-->
+```
+
+```CSS
+/* This is a single-line comment! */
+/*
+This is a multiline 
+comment!
+*/
+```
 
 
