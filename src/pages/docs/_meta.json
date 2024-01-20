@@ -5,5 +5,8 @@
       "layout": "full",
       "typesetting": "article"
     }
+  },
+  "thread": {
+    "title": "Thread class"
   }
 }

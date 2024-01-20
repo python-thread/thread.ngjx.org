@@ -11,6 +11,10 @@
     "type": "page",
     "title": "Documentation"
   },
+  "learn": {
+    "type": "page",
+    "title": "Learn"
+  },
   "about": {
     "type": "page",
     "title": "About"
