@@ -1,3 +1,5 @@
+import { Callout } from 'nextra/components'
+
 # Parallel Processing Documentation
 
 I will lay out how to use the `thread.ParallelProcessing` class!
@@ -74,8 +76,9 @@ It can be ran by invoking the `start()` method
 my_processor.start()
 ```
 
-> [!NOTE]
-> The **threading.ParallelProcessing()** class from python will only be initialized when **start()** is invoked
+<Callout type="info">
+  The **threading.ParallelProcessing()** class from python will only be initialized when **start()** is invoked
+</Callout>
 
 <br />
 
@@ -94,8 +97,10 @@ my_processor.start()
 
 * **overflow_kwargs : Overflow_In
   > These are arguments parsed to [**thread.Thread**](./threading.md#parameters)<br />
-  > [!NOTE]<br />
-  > If `args` is present, then it will automatically be removed from kwargs and joined with `overflow_args`
+  <Callout type="info">
+    If `args` is present, then it will automatically be removed from kwargs and joined with `overflow_args`
+  </Callout>
+  
 
 * **Raises** AssertionError: max_threads is invalid
 

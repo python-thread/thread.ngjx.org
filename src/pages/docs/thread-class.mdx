@@ -1,3 +1,5 @@
+import { Callout } from 'nextra/components'
+
 # Thread Class Documentation
 
 I will lay out how to use the `thread.Thread` class!
@@ -83,8 +85,10 @@ my_thread.start()
 
 * group : None = None
   > This is an argument parsed to `threading.Thread`<br />
-  > [!NOTE]<br />
-  > This does nothing
+
+  <Callout type="info">
+    This does nothing
+  </Callout>
 
 * *overflow_args : Overflow_In
   > These are arguments parsed to `threading.Thread`
@@ -141,8 +145,11 @@ These are methods of [`Thread`](#importing-the-class) class
   > If yielding is True, it halts the current thread execution until the thread is killed or the timeout is exceeded<br />
   > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadnotinitializederror)<br />
   > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
-  > [!NOTE]<br />
-  > This only schedules the thread to be killed, and does not immediately kill the thread
+  import { Callout } from 'nextra/components'
+ 
+  <Callout type="info">
+    This only schedules the thread to be killed, and does not immediately kill the thread
+  </Callout>
 
 <br />
 
@@ -156,8 +163,9 @@ These are a list of thread behvaiours
 While preferably not utilized, we do support killing threads.<br />
 We mark a thread to be killed, and will only be killed when the thread invokes `sys.settrace()`.
 
-> [!IMPORTANT]<br />
-> This means that if your `target` has a long `time.wait()` call, it will only be killed after it moves onto the next line.
+<Callout type="warning">
+  This means that if your `target` has a long `time.wait()` call, it will only be killed after it moves onto the next line.
+</Callout>
 
 <br />
 
