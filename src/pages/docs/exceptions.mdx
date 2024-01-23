@@ -6,7 +6,6 @@ import { Callout } from 'nextra/components'
   Exceptions from Python's `threading` module are not included
 </Callout>
 
-<br />
 <details>
   <summary>Jump to</summary>
   <ul>
@@ -22,14 +21,14 @@ Don't have the thread library? [See here](./getting-started.md) for installing t
 
 ## Ignoring exceptions
 
-When initializing a thread, you can parse a [**suppress_errors**](./threading.md#parameters) bool.<br />
+When initializing a thread, you can parse a [**suppress_errors**](./threading.md#parameters) bool.
 By default it is false, but if set to true, exceptions will not be propagated but just stored within `Thread._errors`
 
-When initializing a thread, you can parse a [**ignore_errors**](./threading.md#parameters) sequence.<br />
-By default it is an empty tuple.<br />
+When initializing a thread, you can parse a [**ignore_errors**](./threading.md#parameters) sequence.
+By default it is an empty tuple.
 Ignored errors will not be propagated and not stored within `Thread._errors`
 
-<br />
+
 
 ### Example
 ```py
@@ -100,21 +99,18 @@ thread5.join()
 print(thread5._errors) # list[]
 ```
 
-<br />
 
 
 ## Exceptions
 
 The list of exceptions that can be thrown
 
-<br />
 
 
 ### ThreadErrorBase
 
 This is the base exception class that all exceptions inherit from
 
-<br />
 
 
 ### ThreadStillRunningError
@@ -124,7 +120,6 @@ This is raised when you attempt to invoke a method which requries the thread to 
 
 > You can check if the thread is running with [**Thread.is_alive()**](threading.md#methods) before invoking the method
 
-<br />
 
 
 ### ThreadNotRunningError
@@ -132,7 +127,6 @@ This is raised when you attempt to invoke a method which requries the thread to 
 This is raised when you attempt to invoke a method which requires the thread to be running, but isn't
 > You can run the thread with [**Thread.start()**](threading.md#methods) before invoking the method
 
-<br />
 
 
 ### ThreadNotInitializedError
@@ -140,12 +134,11 @@ This is raised when you attempt to invoke a method which requires the thread to 
 This is raised when you attempt to invoke a method which requires the thread to be initialized, but isn't
 > You can initialize and start the thread with [**Thread.start()**](threading.md#methods) before invoking the method
 
-<br />
 
 
 ### HookRuntimeError
 
-This is raised when hooks raise an exception<br />
+This is raised when hooks raise an exception
 Conforms to when thread is ran with errors suppressed or ignored
 
 Example traceback
@@ -164,6 +157,5 @@ ImportError:
 <<<<<<<<<<
 ```
 
-<br />
 
 [See here](./threading.md) for how to using the `thread.Thread` class!

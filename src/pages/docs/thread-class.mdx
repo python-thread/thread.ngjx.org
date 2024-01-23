@@ -1,5 +1,7 @@
 import { Callout } from 'nextra/components'
 
+
+
 # Thread Class Documentation
 
 I will lay out how to use the `thread.Thread` class!
@@ -20,21 +22,20 @@ I will lay out how to use the `thread.Thread` class!
 
 Don't have the thread library? [See here](./getting-started.md) for installing thread
 
----
+
 
 ## Importing the class
 
-```py
+```python
 from thread import Thread
 ```
 
-<br />
 
 
 ## Initializing a thread
 
 A simple thread can be prepared to be initialized with this
-```py
+```python
 def my_target(): ...
 
 # Reccommended way
@@ -52,7 +53,6 @@ A thread can be ran by invoking the `start()` method
 my_thread.start()
 ```
 
-<br />
 
 
 ### Parameters
@@ -96,7 +96,6 @@ my_thread.start()
 * **overflow_kwargs : Overflow_In
   > These are arguments parsed to `threading.Thread`
 
-<br />
 
 
 ### Attributes
@@ -112,7 +111,6 @@ These are attributes of [`Thread`](#importing-the-class) class
 * status : str
   > The current status of the thread
 
-<br />
 
 
 ### Methods
@@ -151,7 +149,6 @@ These are methods of [`Thread`](#importing-the-class) class
     This only schedules the thread to be killed, and does not immediately kill the thread
   </Callout>
 
-<br />
 
 
 ## Behviours
@@ -167,11 +164,8 @@ We mark a thread to be killed, and will only be killed when the thread invokes `
   This means that if your `target` has a long `time.wait()` call, it will only be killed after it moves onto the next line.
 </Callout>
 
-<br />
-
 Want an alternative? Learn about [Daemonized Threads!](https://www.geeksforgeeks.org/python-daemon-threads/)
 
-<br />
 
 
 ### Gracefull Exiting - Introduced in v0.1.2
@@ -179,8 +173,6 @@ Want an alternative? Learn about [Daemonized Threads!](https://www.geeksforgeeks
 When the program is abruptly stopped with `CTRL+C` for example, active threads will now attempt to gracefully kill itself.<br />
 
 This is not to be an "end-all be-all" for managing threads. You should still try to properly exit a thread before abruptly exiting the program, or utilize a `Daemonized Thread`.
-
-<br />
 
 
 Now you know how to use the [`Thread`](#importing-the-class) class!
