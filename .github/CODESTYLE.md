@@ -13,8 +13,15 @@ and refer to it throughout the development of your contribution.
 ## Table of Contents
  - [Indentation](#indentation)
  - [Documentation and Commenting](#documentation-and-commenting)
+   - [React and JavaScript](#react-and-javascript)
+   - [HTML and CSS](#html--css)
  - [Commit Message Guidelines](#commit-message-guidelines)
  - [Markdown Guidelines](#markdown-guidelines-mdx-documentation)
+    - [Callouts](#callouts)
+    - [Parameter Documentation](#parameter-documentation)
+    - [Attribute Documentation](#attribute-documentation)
+    - [Method Documentation](#method-documentation)
+
 
 
 
@@ -107,7 +114,8 @@ Documentation with MDX is quite similar to regular markdown, as it just Markdown
  are not required by are appreciated
  - Exceedingly long lines are to be broken (we prefer around 80 characters)
  - The indents are to be two spaces
- - Imports of react components used in the MDX files are to be put at the top of the file 
+ - Imports of react components used in the MDX files are to be put at the top of the file
+ - Use the shorthand for codeblocks (e.g `py` instead of `python`)
 
 ```
 /* Example MDX Document */
@@ -118,11 +126,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore 
 magna aliqua. Ut enim ad minim veniam, quis nostrud 
 exercitation ullamco laboris nisi ut aliquip ex ea 
-commodo consequat. Duis aute irure dolor in 
-reprehenderit in voluptate velit esse cillum dolore eu 
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-non proident, sunt in culpa qui officia deserunt mollit 
-anim id est laborum. found [Lorem Ipsum Generator]
+commodo consequat.
+
 
 
 
@@ -135,7 +140,96 @@ anim id est laborum. found [Lorem Ipsum Generator]
 
 <ExampleComponent/>
 
-
-
+<!-- example comment -->
 [Lorem Ipsum Generator]: https://loremipsum.io/generator/
+
+```py
+print('hello world')
+\```
+<!-- \ is there to ignore markdown formatting -->
+
+```
+
+
+
+### Callouts
+When writing callouts, in Nextra, callouts are defined by the following.
+
+```JavaScript
+/* Remeber when importing components please put it at the top of the document */
+import { Callout } from 'nextra/components'
+ 
+<Callout type="warning">
+  This API will be deprecated soon.
+</Callout>
+```
+
+There are 4 types you can use:
+ - Lightbulb (no arguments / default)
+ - Info `type="info"`
+ - Warning `type="warning"`
+ - Error `type="error"`
+
+For more detailed information head over to the [Nextra component documentation.](https://nextra.site/docs/guide/built-ins/callout)
+
+---
+
+> [!IMPORTANT]
+> The parameter, attribute, and method documentation are relatively the same. This section of the code style will be updated in the future to account for this alongside method parameters and other off cases.
+
+### Parameter Documentation
+To document the parameters found within a class, please use the following format.
+
+```markdown
+* parameter_name : parameter_type = default_value
+  > Description <br />
+  > Description
+```
+
+Example from the repository.
+
+```markdown
+* ignore_errors : Sequence[type[Exception]] = ()
+  > This should be an iterable sequence of all exceptions to ignore.<br />
+  > To ignore all exceptions, parse tuple(Exception)
+```
+
+
+### Attribute Documentation
+To document the attributes found within a class, please use the following format.
+
+```markdown
+* attribute_name : attribute_type
+  > Description <br />
+  > **Raises** [`ErrorName`](./link_to_error.md)
+```
+
+Example from the repository.
+
+```markdown
+* result : Data_Out
+  > The result value of the thread
+  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
+  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
+  > **Raises** [`ThreadStillRunningError`](./exceptions.md#threadStillRunningError)
+```
+
+
+
+### Method Documentation
+To document the method found within a class, please refer to the following format.
+
+```markdown
+* method_name : (parameters) -> return_value
+  > Description<br />
+  > **Raises** [`ErrorName`](./link_to_error.md)
+```
+
+Example from the repository.
+
+```markdown
+* add_hook : ((Data_Out) -> Any | None) -> None
+  > Hooks will be automatically invoked after a thread successfully completes, parsing the return value as the first argument<br />
+  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
+  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)
 ```
