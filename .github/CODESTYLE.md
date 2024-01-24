@@ -142,3 +142,29 @@ print('hello world')
 <!-- \ is there to ignore markdown formatting -->
 
 ```
+
+
+
+### Callouts
+When writing callouts, in Nextra, callouts are defined by the following.
+
+```JavaScript
+/* Remeber when importing components please put it at the top of the document */
+import { Callout } from 'nextra/components'
+ 
+<Callout type="warning">
+  This API will be deprecated soon.
+</Callout>
+```
+
+There are 4 types you can use:
+ - Lightbulb (no arguments / default)
+ - Info `type="info"`
+ - Warning `type="warning"`
+ - Error `type="error"`
+
+For more detailed information head over to the [Nextra component documentation.](https://nextra.site/docs/guide/built-ins/callout)
+
+
+
+### Class Documentation
