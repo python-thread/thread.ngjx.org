@@ -173,7 +173,7 @@ For more detailed information head over to the [Nextra component documentation.]
 
 
 ### Parameter Documentation
-To document the parameters found within a class, please use the following format
+To document the parameters found within a class, please use the following format.
 
 ```markdown
 * group : None = None
@@ -182,6 +182,18 @@ To document the parameters found within a class, please use the following format
   <Callout type="info">
     This does nothing
   </Callout>
+```
+
+
+### Attribute Documentation
+To document the attributes found within a class, please use the following format.
+
+```markdown
+* result : Data_Out
+  > The result value of the thread
+  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
+  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
+  > **Raises** [`ThreadStillRunningError`](./exceptions.md#threadStillRunningError)
 ```
 
 
