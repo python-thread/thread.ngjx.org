@@ -167,4 +167,14 @@ For more detailed information head over to the [Nextra component documentation.]
 
 
 
-### Class Documentation
+### Parameter Documentation
+To document the parameters found within a class, please use the following format
+
+```
+* group : None = None
+  > This is an argument parsed to `threading.Thread`<br />
+
+  <Callout type="info">
+    This does nothing
+  </Callout>
+```
