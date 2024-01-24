@@ -19,6 +19,8 @@ and refer to it throughout the development of your contribution.
  - [Markdown Guidelines](#markdown-guidelines-mdx-documentation)
     - [Callouts](#callouts)
     - [Parameter Documentation](#parameter-documentation)
+    - [Attribute Documentation](#attribute-documentation)
+    - [Method Documentation](#method-documentation)
 
 
 
