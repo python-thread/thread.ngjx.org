@@ -15,7 +15,7 @@ I will lay out how to use the `thread.Thread` class!
     <li><a href='#parameters'> Parameters </a></li>
     <li><a href='#attributes'> Attributes </a></li>
     <li><a href='#methods'> Class Methods </a></li>
-    <li><a href='#behviours'> Behaviours </a></li>
+    <li><a href='#behaviours'> Behaviours </a></li>
   </ul>
 </details>
 
@@ -38,13 +38,13 @@ A simple thread can be prepared to be initialized with this
 ```python
 def my_target(): ...
 
-# Reccommended way
+# Recommended way
 my_thread = Thread(
   target = my_target
 )
 
 # OR
-# Not the reccommended way
+# Not the recommended way
 my_thread = Thread(my_target)
 ```
 
@@ -61,15 +61,15 @@ my_thread.start()
   > This should be a function that takes in anything and returns anything
 
 * args : Sequence[Data_In] = ()
-  > This should be an interable sequence of arguments parsed to the `target` function <br />
+  > This should be an iterable sequence of arguments parsed to the `target` function <br />
   > (e.g. tuple('foo', 'bar'))
   
 * kwargs : Mapping[str, Data_In] = {}
-  > This should be the kwargs pased to the `target` function<br />
+  > This should be the kwargs passed to the `target` function<br />
   > (e.g. dict(foo = 'bar'))
 
 * ignore_errors : Sequence[type[Exception]] = ()
-  > This should be an interable sequence of all exceptions to ignore.<br />
+  > This should be an iterable sequence of all exceptions to ignore.<br />
   > To ignore all exceptions, parse tuple(Exception)
 
 * suppress_errors : bool = False
@@ -153,7 +153,7 @@ These are methods of [`Thread`](#importing-the-class) class
 
 ## Behviours
 
-These are a list of thread behvaiours
+These are a list of thread behaviors
 
 ### Killing Threads - Introduced in v0.1.2
 
@@ -168,7 +168,7 @@ Want an alternative? Learn about [Daemonized Threads!](https://www.geeksforgeeks
 
 
 
-### Gracefull Exiting - Introduced in v0.1.2
+### Graceful Exiting - Introduced in v0.1.2
 
 When the program is abruptly stopped with `CTRL+C` for example, active threads will now attempt to gracefully kill itself.<br />
 
