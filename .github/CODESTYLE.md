@@ -170,23 +170,39 @@ There are 4 types you can use:
 
 For more detailed information head over to the [Nextra component documentation.](https://nextra.site/docs/guide/built-ins/callout)
 
+---
 
+> [!IMPORTANT]
+> The parameter, attribute, and method documentation are relatively the same. This section of the code style will be updated in the future to account for this alongside method parameters and other off cases.
 
 ### Parameter Documentation
 To document the parameters found within a class, please use the following format.
 
 ```markdown
-* group : None = None
-  > This is an argument parsed to `threading.Thread`<br />
+* parameter_name : parameter_type = default_value
+  > Description <br />
+  > Description
+```
 
-  <Callout type="info">
-    This does nothing
-  </Callout>
+Example from the repository.
+
+```markdown
+* ignore_errors : Sequence[type[Exception]] = ()
+  > This should be an iterable sequence of all exceptions to ignore.<br />
+  > To ignore all exceptions, parse tuple(Exception)
 ```
 
 
 ### Attribute Documentation
 To document the attributes found within a class, please use the following format.
+
+```
+* attribute_name : attribute_type
+  > Description <br />
+  > **Raises** [`ErrorName`](./link_to_error.md)
+```
+
+Example from the repository.
 
 ```markdown
 * result : Data_Out
@@ -200,9 +216,18 @@ To document the attributes found within a class, please use the following format
 
 ### Method Documentation
 To document the method found within a class, please refer to the following format.
+
+```
+* method_name : (parameters) -> return_value
+  > Description<br />
+  > **Raises** [`ErrorName`](./link_to_error.md)
+```
+
+Example from the repository.
+
 ```markdown
-* join : () -> JoinTerminatedStatus
-  > Halts the current thread execution until a thread completes or exceeds the timeout<br />
+* add_hook : ((Data_Out) -> Any | None) -> None
+  > Hooks will be automatically invoked after a thread successfully completes, parsing the return value as the first argument<br />
   > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
   > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)
 ```
