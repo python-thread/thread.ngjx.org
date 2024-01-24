@@ -13,8 +13,13 @@ and refer to it throughout the development of your contribution.
 ## Table of Contents
  - [Indentation](#indentation)
  - [Documentation and Commenting](#documentation-and-commenting)
+   - [React and JavaScript](#react-and-javascript)
+   - [HTML and CSS](#html--css)
  - [Commit Message Guidelines](#commit-message-guidelines)
  - [Markdown Guidelines](#markdown-guidelines-mdx-documentation)
+    - [Callouts](#callouts)
+    - [Parameter Documentation](#parameter-documentation)
+
 
 
 
