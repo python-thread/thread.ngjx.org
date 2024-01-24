@@ -198,7 +198,7 @@ Example from the repository.
 ### Attribute Documentation
 To document the attributes found within a class, please use the following format.
 
-```
+```markdown
 * attribute_name : attribute_type
   > Description <br />
   > **Raises** [`ErrorName`](./link_to_error.md)
@@ -219,7 +219,7 @@ Example from the repository.
 ### Method Documentation
 To document the method found within a class, please refer to the following format.
 
-```
+```markdown
 * method_name : (parameters) -> return_value
   > Description<br />
   > **Raises** [`ErrorName`](./link_to_error.md)
