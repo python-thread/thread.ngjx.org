@@ -107,7 +107,8 @@ Documentation with MDX is quite similar to regular markdown, as it just Markdown
  are not required by are appreciated
  - Exceedingly long lines are to be broken (we prefer around 80 characters)
  - The indents are to be two spaces
- - Imports of react components used in the MDX files are to be put at the top of the file 
+ - Imports of react components used in the MDX files are to be put at the top of the file
+ - Use the shorthand for codeblocks (e.g `py` instead of `python`)
 
 ```
 /* Example MDX Document */
@@ -118,11 +119,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore 
 magna aliqua. Ut enim ad minim veniam, quis nostrud 
 exercitation ullamco laboris nisi ut aliquip ex ea 
-commodo consequat. Duis aute irure dolor in 
-reprehenderit in voluptate velit esse cillum dolore eu 
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-non proident, sunt in culpa qui officia deserunt mollit 
-anim id est laborum. found [Lorem Ipsum Generator]
+commodo consequat.
+
 
 
 
@@ -135,7 +133,12 @@ anim id est laborum. found [Lorem Ipsum Generator]
 
 <ExampleComponent/>
 
-
-
+<!-- example comment -->
 [Lorem Ipsum Generator]: https://loremipsum.io/generator/
+
+```py
+print('hello world')
+\```
+<!-- \ is there to ignore markdown formatting -->
+
 ```
