@@ -175,11 +175,22 @@ For more detailed information head over to the [Nextra component documentation.]
 ### Parameter Documentation
 To document the parameters found within a class, please use the following format
 
-```
+```markdown
 * group : None = None
   > This is an argument parsed to `threading.Thread`<br />
 
   <Callout type="info">
     This does nothing
   </Callout>
+```
+
+
+
+### Method Documentation
+To document the method found within a class, please refer to the following format.
+```markdown
+* join : () -> JoinTerminatedStatus
+  > Halts the current thread execution until a thread completes or exceeds the timeout<br />
+  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
+  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)
 ```
