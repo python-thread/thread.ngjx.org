@@ -1,8 +1,23 @@
 {
-  "index": {
-    "title": "thread"
+  "introduction": {
+    "title": "Introduction"
   },
-  "thread": {
-    "title": "Thread class"
+  "thread-class": {
+    "title": "Thread Class"
+  },
+  "installation": {
+    "title": "Installation"
+  },
+  "configuration": {
+    "title": "Configuration"
+  },
+  "command-line-interface": {
+    "title": "Command Line Interface"
+  },
+  "parallel-processing": {
+    "title": "Parallel Processing"
+  },
+  "exceptions": {
+    "title": "Exceptions"
   }
 }
