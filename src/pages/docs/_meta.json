@@ -1,7 +1,5 @@
 {
-  "introduction": {
-    "title": "Introduction"
-  },
+  "index": "Introduction",
   "thread-class": {
     "title": "Thread Class"
   },
