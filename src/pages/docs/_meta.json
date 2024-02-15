@@ -1,23 +1,9 @@
 {
-  "introduction": {
-    "title": "Introduction"
-  },
-  "thread-class": {
-    "title": "Thread Class"
-  },
-  "installation": {
-    "title": "Installation"
-  },
-  "configuration": {
-    "title": "Configuration"
-  },
-  "command-line-interface": {
-    "title": "Command Line Interface"
-  },
-  "parallel-processing": {
-    "title": "Parallel Processing"
-  },
-  "exceptions": {
-    "title": "Exceptions"
-  }
+  "index": "Introduction",
+  "thread-class": "Thread Class",
+  "installation": "Installation",
+  "configuration": "Configuration",
+  "command-line-interface": "Command Line Interface",
+  "parallel-processing": "Parallel Processing",
+  "exceptions": "Exceptions"
 }
