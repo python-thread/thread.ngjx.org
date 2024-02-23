@@ -1,0 +1,117 @@
+import { Callout } from 'nextra/components'
+
+# Threading Examples
+
+Here are some examples of using **thread** to run code in sub threads.
+
+## General usage
+
+Here are the most common ways to spawn threads.
+
+### On-Demand Threads
+These threads are created on runtime and are not started automatically.
+Calling `thread.Thread.start()` will start the thread immediately.
+
+```py
+import time
+import thread
+
+def my_background_task():
+  time.wait(5)
+  print('My background task is complete.')
+
+worker = thread.Thread(target=my_background_task)
+worker.start()
+
+print('Started background task.')
+
+worker.join() # Halt the main thread until the background thread finishes.
+
+# Terminal output:
+# > Started background task.
+# > My background task is complete.
+```
+
+### Decoratored Functions
+Decoratored functions automatically spawn new threads and run in the background everytime they are called,
+simply use `thread.threaded` to decorate the function.
+
+```py
+import time
+import thread
+
+@thread.threaded
+def my_background_task():
+  time.wait(5)
+  print('My background task is complete.')
+
+worker = my_background_task()
+print('Started background task.')
+
+worker.join()
+
+# Terminal output:
+# > Started background task.
+# > My background task is complete.
+```
+
+## Type Safety
+
+Thread supports type annotations for Python **3.9+**.
+This will help your LSP to detect type errors and reduce the risk of runtime errors.
+
+### A Simple Example
+All that is needed is to annotate the function like you would in Python.
+
+```py
+import thread
+
+def background_function(x: int) -> int:
+  return x + 1
+
+worker = Thread(target=background_function, args=(5,))
+worker.start()
+returned = worker.get_return_value() # int
+```
+
+## Caution
+
+Some cautions and limitations to consider when using **thread**.
+
+<Callout type='warning'>
+  **Types Are Not Enforced at Runtime**
+
+  This is to support the use of **thread** without type safety.
+  ```py
+  import thread
+
+  @thread.threaded
+  def threaded_function(x: int) -> int:
+    return x + 1
+
+  threaded_function('a')
+
+  # 'a' will be underlined by your LSP, but will still run the function.
+  # A Type Error will be raised at runtime.
+  # This is not due to `thread`, but due to the invalid opperand between a string and an integer.
+  ```
+</Callout>
+
+<Callout type='warning'>
+  **Parsing `args`/`kwargs` will not provide type safety**
+
+  Due to how Python's typing library works,
+  it is not possible to provide type safety for `args` and `kwargs` for `on-demand` threads.
+
+  ```py
+  import thread
+
+  def my_function(x: int) -> int:
+    return x + 1
+
+  worker = thread.Thread(target=my_function, args=('a',)) # 'a' will not be underlined by LSP.
+  ```
+
+  This does not affect decoratored functions.
+</Callout>
+
