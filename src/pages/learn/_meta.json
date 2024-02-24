@@ -8,5 +8,8 @@
   },
   "thread": {
     "title": "Learn Thread"
+  },
+  "cautions": {
+    "title": "Cautions"
   }
 }

@@ -84,26 +84,3 @@ worker.start()
 returned = worker.get_return_value() # list[int]
 ```
 
-## Caution
-
-Some cautions and limitations to consider when using **thread**.
-
-<Callout type='warning'>
-  **Types Are Not Enforced at Runtime**
-
-  This is to support the use of **thread** without type safety.
-  ```py
-  import thread
-
-  @thread.threaded
-  def threaded_function(x: int) -> int:
-    return x + 1
-
-  threaded_function('a')
-
-  # 'a' will be underlined by your LSP, but will still run the function.
-  # A Type Error will be raised at runtime.
-  # This is not due to `thread`, but due to the invalid opperand between a string and an integer.
-  ```
-</Callout>
-
