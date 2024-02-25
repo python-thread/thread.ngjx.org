@@ -302,9 +302,23 @@ These are attributes of `thread.Thread` class.
 
 These are methods of `thread.Thread` class.
 
-* start : () -> None
-  > Initializes the thread and starts it<br />
-  > **Raises** [`ThreadStillRunningError`](./exceptions.md#threadStillRunningError)
+<Argument title='start' ofType='() -> None'>
+  This starts the thread.
+
+  Simply invoke `Thread.start()` on a thread object.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = my_target)
+  worker.start()
+  ```
+
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadStillRunningError']} />
+  </Callout>
+</Argument>
+
 
 * is_alive : () -> bool
   > Indicates whether the thread is still alive<br />
