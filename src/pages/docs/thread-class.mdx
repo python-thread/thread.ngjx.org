@@ -95,6 +95,50 @@ worker = my_target() # thread.Thread()
 This will cover the required and optional arguments initializing a thread.
 
 ### Required
+
+<Argument title='target' ofType='(*args, **kwargs) -> Data_Out'>
+  This should be a function which takes in any arguments and returns anything.
+
+  Any arguments and keyword arguments parsed to the `target` function can be parsed through `args` and `kwargs`.
+  `Data_Out` will be written to `Thread._returned_value` and can be accessed via `Thread.result` or `Thread.get_return_value()`.
+
+  `target` can be parsed as the first argument to `Thread.__init__()`, although it is recommended to use only keyword arguments.
+  ```py
+  import thread
+
+  thread.Thread(lambda x: x + 1)
+  thread.Thread(target = lambda x: x + 1)
+  ```
+
+  <Callout type='info'>
+    Best Practices
+
+    While you can use a lambda function, it is best to use a normal function for your LSP/Linter to infer types.
+    ```py
+    from thread import Thread
+
+    worker = Thread(target = lambda x: x + 1)
+    worker.start()
+    worker.join()
+
+    worker.result # This will be inferred as Unknown by your LSP/Linter
+    ```
+    ```py
+    from thread import Thread
+
+    def my_target(x: int) -> int:
+      return x + 1
+
+    worker = Thread(target = my_target)
+    worker.start()
+    worker.join()
+
+    worker.result # This will be inferred as int
+    ```
+  </Callout>
+</Argument>
+
+
 ### Optional
 
 * ignore_errors : Sequence[type[Exception]] = ()
