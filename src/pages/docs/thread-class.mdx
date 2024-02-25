@@ -401,10 +401,25 @@ These are methods of `thread.Thread` class.
   </Callout>
 </Argument>
 
-* join : () -> JoinTerminatedStatus
-  > Halts the current thread execution until a thread completes or exceeds the timeout<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)
+<Argument title='join' ofType='(timeout: float = None) -> bool'>
+  This halts the current thread execution until the thread completes or exceeds the timeout.
+
+  A None value for timeout will have the same effect as passing `float("inf")` as a timeout.
+  The boolean returned by `Thread.join()` is `True` if the thread completed within the timeout and `False` if otherwise.
+
+  Simply invoke `Thread.join()` on a thread object.
+  ```py
+  import thread
+  worker = thread.Thread(target = my_target)
+  worker.join(5)
+  worker.join()
+  ```
+
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
+  </Callout>
+</Argument>
 
 * kill : (yielding: bool = False, timeout: float = 5) -> bool
   > Schedules the thread to be killed<br />
