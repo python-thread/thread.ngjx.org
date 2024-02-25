@@ -278,14 +278,14 @@ This will cover the required and optional arguments initializing a thread.
 
 These are attributes of `thread.Thread` class.
 
-* result : Data_Out
-  > The result value of the thread
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
-  > **Raises** [`ThreadStillRunningError`](./exceptions.md#threadStillRunningError)
+<Argument title='result' ofType='Data_Out'>
+  This is what is returned from the target function.
 
-* status : str
-  > The current status of the thread
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError', 'ThreadStillRunningError']} />
+  </Callout>
+</Argument>
 
 
 
