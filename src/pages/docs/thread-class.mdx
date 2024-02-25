@@ -218,11 +218,21 @@ This will cover the required and optional arguments initializing a thread.
   </Callout>
 </Argument>
 
+<Argument title='suppress_errors' ofType='bool' defaultValue='False'>
+  This should be a boolean indicating whether non-ignored exceptions will be propagated.
 
-* suppress_errors : bool = False
-  > This should be a boolean indicating whether exceptions will be raised.<br />
-  > If true, exceptions will only write to internal `errors` property<br />
-  > If false, exceptions will propagate if not ignored
+  <Callout type='info'>
+    Non-ignored exceptions will be logged to `Thread.errors` without propagating.
+  </Callout>
+
+  ```py
+  import thread
+
+  # Thread.errors = [RuntimeError]
+  # hooks begin execution
+  thread.Thread(target = raiseRuntimeError, suppress_errors = True)
+  ```
+</Argument>
 
 * name : Optional[str] = None
   > This is an argument parsed to `threading.Thread`
