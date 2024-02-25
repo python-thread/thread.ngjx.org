@@ -336,10 +336,29 @@ These are methods of `thread.Thread` class.
   </Callout>
 </Argument>
 
-* add_hook : ((Data_Out) -> Any | None) -> None
-  > Hooks will be automatically invoked after a thread successfully completes, parsing the return value as the first argument<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)
+<Argument title='add_hook' ofType='((Data_Out) -> Any | None) -> None'>
+  This adds a hook to the thread.
+
+  Hooks are invoked in the worker thread after the thread successfully completes, parsing `Data_Out` as the first argument.
+  If a hook errors, the exception is recorded to `Thread.errors`, and is only propagated in the main thread when `Thread.join()`, `Thread.get_return_value()` or `Thread.result` is invoked.
+
+  Simply invoke `Thread.add_hook(hook)` on a thread object.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = lambda x: x+1, args = (2,))
+  worker.add_hook(lambda x: print(f'Worker Hook: {x}')
+  worker.start()
+
+  # > Worker Hook: 3
+  # Program ends
+  ```
+
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
+  </Callout>
+</Argument>
 
 * get_return_value : () -> Data_Out
   > Halts the current thread execution until the thread completes
