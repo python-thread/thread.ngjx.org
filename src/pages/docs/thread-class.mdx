@@ -319,10 +319,22 @@ These are methods of `thread.Thread` class.
   </Callout>
 </Argument>
 
+<Argument title='is_alive' ofType='() -> bool'>
+  This indicates whether the thread is still alive.
 
-* is_alive : () -> bool
-  > Indicates whether the thread is still alive<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)
+  Simply invoke `Thread.is_alive()` on a thread object.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = my_target)
+  worker.is_alive()
+  ```
+
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadNotInitializedError']} />
+  </Callout>
+</Argument>
 
 * add_hook : ((Data_Out) -> Any | None) -> None
   > Hooks will be automatically invoked after a thread successfully completes, parsing the return value as the first argument<br />
