@@ -234,8 +234,20 @@ This will cover the required and optional arguments initializing a thread.
   ```
 </Argument>
 
-* name : Optional[str] = None
-  > This is an argument parsed to `threading.Thread`
+<Argument title='name' ofType='str' defaultValue='None'>
+  This should be a string name of the thread.
+
+  **_By default, a unique name is constructed of the form "Thread-N" where N is a small decimal number, or "Thread-N (target)" where "target" is target.\_\_name\_\_ if the target argument is specified._**
+  ~ Python threading docs.
+
+  ```py
+  import thread
+
+  thread.Thread(target = my_target, name = 'my_thread')
+  ```
+
+  See [`threading` documentation](https://docs.python.org/3/library/threading.html#threading.Thread) for more details.
+</Argument>
 
 * daemon : bool = False
   > This is an argument parsed to `threading.Thread`
