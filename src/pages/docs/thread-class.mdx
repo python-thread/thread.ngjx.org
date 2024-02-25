@@ -172,9 +172,52 @@ This will cover the required and optional arguments initializing a thread.
     Kwargs used in `Thread.__init__()` cannot offer static type checking. [Learn More](/learn/cautions/type-safety)
   </Callout>
 </Argument>
-* ignore_errors : Sequence[type[Exception]] = ()
-  > This should be an iterable sequence of all exceptions to ignore.<br />
-  > To ignore all exceptions, parse tuple(Exception)
+
+<Argument title='ignore_errors' ofType='Sequence[type[Exception]]' defaultValue='()'>
+  This should be an iterable sequence of all types of exceptions to ignore.
+  Ignored errors are not propagated or logged to `Thread.errors`.
+
+  The `Exception` class can be parsed to ignore all exceptions.
+
+  For example:
+  ```py
+  import thread
+
+  # This ignores all exceptions
+  # thread.errors = []
+  # hooks begin execution
+  thread.Thread(target = raiseRuntimeError, ignore_errors = (Exception,))
+
+  # This propagates the exception
+  # thread.errors = [RuntimeError]
+  # thread is killed
+  thread.Thread(target = raiseRuntimeError, ignore_errors = [TypeError])
+
+  # This ignores RuntimeError
+  # thread.errors = []
+  # hooks begin execution
+  thread.Thread(target = raiseRuntimeError, ignore_errors = [RuntimeError])
+  ```
+
+  <Callout type='info'>
+    Ignored exceptions may cause unintended skipped code execution.
+    ```py
+    import thread
+
+    def my_target():
+      print('Before raise')
+      raise Exception('oh no!')
+      print('After raise')
+
+    thread.Thread(target = my_target, ignore_errors = (Exception,))
+    thread.start()
+
+    # > Before raise
+    # Program End
+    ```
+  </Callout>
+</Argument>
+
 
 * suppress_errors : bool = False
   > This should be a boolean indicating whether exceptions will be raised.<br />
