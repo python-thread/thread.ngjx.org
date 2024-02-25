@@ -296,7 +296,17 @@ These are attributes of `thread.Thread` class.
   </Callout>
 </Argument>
 
+<Argument title='errors' ofType='List[Exception]'>
+  This is the list of errors raised by the thread.
 
+  Only non-ignored errors are logged to this list.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = my_target)
+  worker.errors
+  ```
+</Argument>
 
 ### Methods
 
