@@ -24,7 +24,10 @@ from thread import Thread
 
 ## Quick Start
 
-A simple thread can be prepared to be initialized with this
+There are main 2 ways of initializing a thread.
+
+### On-Demand
+You can create a simple thread by initializing `thread.Thread` and parsing the `target` function.
 ```python
 def my_target(): ...
 
@@ -43,21 +46,33 @@ A thread can be ran by invoking the `start()` method
 my_thread.start()
 ```
 
+### Decoratored Function
+You can decorate a function with `thread.threaded` which uses `thread.Thread`.
+When the decorated function is invoked, it will automatically be ran in a new thread each time and return a `thread.Thread` object.
 
+```python
+import thread
 
-### Parameters
+@thread.threaded
+def my_target(): ...
 
-* target : (Data_In, *args, **kwargs) -> Any | Data_Out
-  > This should be a function that takes in anything and returns anything
+worker = my_target() # thread.Thread()
+```
 
-* args : Sequence[Data_In] = ()
-  > This should be an iterable sequence of arguments parsed to the `target` function <br />
-  > (e.g. tuple('foo', 'bar'))
-  
-* kwargs : Mapping[str, Data_In] = {}
-  > This should be the kwargs passed to the `target` function<br />
-  > (e.g. dict(foo = 'bar'))
+<Callout type='info'>
+  Did you know?
 
+  Decorators can take in keyword arguments that change the behavior of the thread.
+  ```py
+  import thread
+
+  @thread.threaded(name = 'my_thread', suppress_errors = True)
+  def my_target(): ...
+  ```
+
+  See the full list of arguments [here](#initialization)
+
+</Callout>
 * ignore_errors : Sequence[type[Exception]] = ()
   > This should be an iterable sequence of all exceptions to ignore.<br />
   > To ignore all exceptions, parse tuple(Exception)
