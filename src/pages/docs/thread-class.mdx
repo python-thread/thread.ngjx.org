@@ -156,6 +156,22 @@ This will cover the required and optional arguments initializing a thread.
     Args used in `Thread.__init__()` cannot offer static type checking. [Learn More](/learn/cautions/type-safety)
   </Callout>
 </Argument>
+
+<Argument title='kwargs' ofType='Mapping[str, Data_In]' defaultValue='{}'>
+  This should be a mapping of kwargs passed to the `target` function.
+
+  For example:
+  ```py
+  import thread
+
+  thread.Thread(target = my_target, kwargs = {'foo': 'bar'})
+  thread.Thread(target = my_target, kwargs = dict(foo = 'bar'))
+  ```
+
+  <Callout type='warning'>
+    Kwargs used in `Thread.__init__()` cannot offer static type checking. [Learn More](/learn/cautions/type-safety)
+  </Callout>
+</Argument>
 * ignore_errors : Sequence[type[Exception]] = ()
   > This should be an iterable sequence of all exceptions to ignore.<br />
   > To ignore all exceptions, parse tuple(Exception)
