@@ -421,15 +421,33 @@ These are methods of `thread.Thread` class.
   </Callout>
 </Argument>
 
-* kill : (yielding: bool = False, timeout: float = 5) -> bool
-  > Schedules the thread to be killed<br />
-  > If yielding is True, it halts the current thread execution until the thread is killed or the timeout is exceeded<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadnotinitializederror)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
- 
-  <Callout type="info">
-    This only schedules the thread to be killed, and does not immediately kill the thread
+<Argument title='kill' ofType='(yielding: bool = False, timeout: float = 5) -> bool'>
+  This schedules the thread to be killed.
+
+  If yielding is True, it halts the current thread execution until the thread is killed or the timeout is exceeded.
+  Similar to `Thread.join()`, a None value for timeout will have the same effect as passing `float("inf")` as a timeout.
+
+  Simply invoke `Thread.kill()` on a thread object.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = my_target)
+  worker.kill(True, 10)
+  worker.kill(False)
+  worker.kill()
+  ```
+
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
   </Callout>
+
+  <Callout type='warning'>
+    This only schedules the thread to be killed, and does not immediately kill the thread.
+
+    Meaning that if your `target` has a long `time.wait()` call, it will only be killed after it moves onto the next line.
+  </Callout>
+</Argument>
 
 
 
