@@ -249,8 +249,11 @@ This will cover the required and optional arguments initializing a thread.
   See [`threading` documentation](https://docs.python.org/3/library/threading.html#threading.Thread) for more details.
 </Argument>
 
-* daemon : bool = False
-  > This is an argument parsed to `threading.Thread`
+<Argument title='daemon' ofType='bool' defaultValue='False'>
+  This should be a boolean indicating whether the thread should be a daemon thread.
+
+  See [`threading` documentation](https://docs.python.org/3/library/threading.html#threading.Thread) for more details.
+</Argument>
 
 * group : None = None
   > This is an argument parsed to `threading.Thread`<br />
