@@ -384,8 +384,22 @@ These are methods of `thread.Thread` class.
   </Callout>
 </Argument>
 
-* get_return_value : () -> Data_Out
-  > Halts the current thread execution until the thread completes
+<Argument title='get_return_value' ofType='() -> Data_Out'>
+  This halts the current thread execution until the thread completes and returns the value returned by the target function.
+
+  Simply invoke `Thread.get_return_value()` on a thread object.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = my_target)
+  worker.get_return_value()
+  ```
+
+  <Callout>
+    Exceptions Raised
+    <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
+  </Callout>
+</Argument>
 
 * join : () -> JoinTerminatedStatus
   > Halts the current thread execution until a thread completes or exceeds the timeout<br />
