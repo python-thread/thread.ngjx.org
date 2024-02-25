@@ -449,28 +449,3 @@ These are methods of `thread.Thread` class.
   </Callout>
 </Argument>
 
-
-
-## Behaviours
-
-These are a list of thread behaviors
-
-### Killing Threads - Introduced in v0.1.2
-
-While preferably not utilized, we do support killing threads.<br />
-We mark a thread to be killed, and will only be killed when the thread invokes `sys.settrace()`.
-
-<Callout type="warning">
-  This means that if your `target` has a long `time.wait()` call, it will only be killed after it moves onto the next line.
-</Callout>
-
-Want an alternative? Learn about [Daemonized Threads!](https://www.geeksforgeeks.org/python-daemon-threads/)
-
-
-
-### Graceful Exiting - Introduced in v0.1.2
-
-When the program is abruptly stopped with `CTRL+C` for example, active threads will now attempt to gracefully kill itself.<br />
-
-This is not to be an "end-all be-all" for managing threads. You should still try to properly exit a thread before abruptly exiting the program, or utilize a `Daemonized Thread`.
-
