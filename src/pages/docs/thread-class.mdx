@@ -308,6 +308,20 @@ These are attributes of `thread.Thread` class.
   ```
 </Argument>
 
+<Argument title='hooks' ofType='List[(Data_Out) -> Any | None]'>
+  This is the list of hooks added to the thread.
+
+  Hooks will be executed in the same order as they are added to the list.
+  ```py
+  import thread
+
+  worker = thread.Thread(target = my_target)
+  worker.hooks
+  ```
+</Argument>
+
+
+
 ### Methods
 
 These are methods of `thread.Thread` class.
