@@ -172,8 +172,59 @@ worker = my_target(dataset, arg1, arg2, arg3 = True) # thread.ParallelProcessing
 
 ## Initialization
 
-* function : (DataProcessor, dataset, *args, **kwargs) -> Any | Data_Out
-  > This should be a function that takes in a dataset and/or anything and returns Data_Out and/or anything
+This will cover the required and optional arguments initializing a parallel process.
+
+### Required
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      function
+      <ArgumentExtra>(Data_In, *args, **kwargs) -> Data_Out</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This should be a function that takes in a data from the `dataset` with/without overloads and returns Data_Out.
+
+    Arguments and keyword arguments excluding the first argument parsed to the `function` can be parsed through `args` and `kwargs`.
+    `Data_Out` will be written to the generated thread's `Thread._returned_value` and can be accessed via `ParallelProcessing.results` or `ParallelProcessing.get_return_values()`.
+
+    `function` can be parsed as the first argument to `ParallelProcessing.__init__()`, although it is recommended to use only keyword arguments.
+    ```py
+    import thread
+
+    thread.ParallelProcessing(lambda x: x + 1, [])
+    thread.ParallelProcessing(function = lambda x: x + 1, dataset = [])
+    ```
+
+    <Callout type='info'>
+      Best Practices
+
+      While you can use a lambda function, it is best to use a normal function for your LSP/Linter to infer types.
+      ```py
+      from thread import ParallelProcessing
+
+      worker = ParallelProcessing(function = lambda x: x + 1, dataset = [1, 2, 3])
+      worker.start()
+      worker.join()
+
+      worker.results # This will be inferred as Unknown by your LSP/Linter
+      ```
+      ```py
+      from thread import ParallelProcessing
+
+      def my_target(x: int) -> int:
+        return x + 1
+
+      worker = ParallelProcessing(function = my_target, dataset = [1, 2, 3])
+      worker.start()
+      worker.join()
+
+      worker.results # This will be inferred as a list[int]
+      ```
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
 
 * dataset : Sequence[Data_In] = ()
   > This should be an interable sequence of arguments parsed to the `DataProcessor` function<br />
