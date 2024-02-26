@@ -226,10 +226,28 @@ This will cover the required and optional arguments initializing a parallel proc
   </ArgumentBody>
 </ArgumentWrapper>
 
-* dataset : Sequence[Data_In] = ()
-  > This should be an interable sequence of arguments parsed to the `DataProcessor` function<br />
-  > (e.g. tuple('foo', 'bar'))
-  
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      dataset
+      <ArgumentExtra>Sequence[Data_In]</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This should be an interable sequence of data parsed as the first argument to `function`.
+
+    ```py
+    import thread
+
+    def my_function(x: int) -> int:
+      ...
+
+    thread.ParallelProcessing(function = my_function, dataset = [1, 2, 3])
+    thread.ParallelProcessing(function = my_function, dataset = ('hi')) # This will be highlighted by your LSP/Linter
+    ```
+  </ArgumentBody>
+</ArgumentWrapper>
+
 * *overflow_args : Overflow_In
   > These are arguments parsed to [**thread.Thread**](./threading.md#parameters)
 
