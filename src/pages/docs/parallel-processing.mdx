@@ -325,13 +325,13 @@ These are methods of `thread.ParallelProcessing` class.
     </strong>
   </summary>
   <ArgumentBody>
-    This starts the thread.
+    This starts the processing.
 
-    Simply invoke `Thread.start()` on a thread object.
+    Simply invoke `ParallelProcessing.start()` on a ParallelProcessing object.
     ```py
     import thread
 
-    worker = thread.Thread(target = my_target)
+    worker = thread.ParallelProcessing(function = my_func, dataset = [1, 2, 3])
     worker.start()
     ```
 
@@ -350,13 +350,13 @@ These are methods of `thread.ParallelProcessing` class.
     </strong>
   </summary>
   <ArgumentBody>
-    This indicates whether the thread is still alive.
+    This indicates whether the threads are still alive.
 
-    Simply invoke `Thread.is_alive()` on a thread object.
+    Simply invoke `ParallelProcessing.is_alive()` on a ParallelProcessing object.
     ```py
     import thread
 
-    worker = thread.Thread(target = my_target)
+    worker = thread.ParallelProcessing(function = my_func, dataset = [1, 2, 3])
     worker.is_alive()
     ```
 
