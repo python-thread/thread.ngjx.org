@@ -279,11 +279,20 @@ This will cover the required and optional arguments initializing a parallel proc
 
 These are attributes of `thread.ParallelProcessing` class.
 
-* results : List[Data_Out]
-  > The result value<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
-  > **Raises** [`ThreadStillRunningError`](./exceptions.md#threadStillRunningError)
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      results
+      <ArgumentExtra>List[Data_Out]</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This is a list of the data that was returned by the `function` in `thread.ParallelProcessing`.
+    <Callout>
+      <TabbedData type='exception' keys={['ThreadStillRunningError', 'ThreadNotInitializedError', 'ThreadNotRunningError']} />
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
 
 
 
