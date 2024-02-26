@@ -248,17 +248,28 @@ This will cover the required and optional arguments initializing a parallel proc
   </ArgumentBody>
 </ArgumentWrapper>
 
-* *overflow_args : Overflow_In
-  > These are arguments parsed to [**thread.Thread**](./threading.md#parameters)
 
-* **overflow_kwargs : Overflow_In
-  > These are arguments parsed to [**thread.Thread**](./threading.md#parameters)<br />
-  <Callout type="info">
-    If `args` is present, then it will automatically be removed from kwargs and joined with `overflow_args`
-  </Callout>
-  
+### Optional
 
-* **Raises** AssertionError: max_threads is invalid
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      *args / **kwargs
+      <ArgumentExtra>(default: None)</ArgumentExtra>
+      <ArgumentExtra>Any / Mapping[str, Any]</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    These overloads are parsed to `thread.Thread.__init__()`, then `threading.Thread.__init__()`.
+
+    <Callout type='info'>
+      If kwargs contain an argument named `args`, then it will automatically be removed from kwargs and joined with `ParallelProcessing.__init__().args`.
+    </Callout>
+
+    See [`thread.Thread` documentation](/docs/thread-class#optional) for more details.<br />
+    See [`threading` documentation](https://docs.python.org/3/library/threading.html#threading.Thread) for more details.
+  </ArgumentBody>
+</ArgumentWrapper>
 
 
 
