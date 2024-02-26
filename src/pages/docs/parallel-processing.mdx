@@ -367,22 +367,95 @@ These are methods of `thread.ParallelProcessing` class.
   </ArgumentBody>
 </ArgumentWrapper>
 
-* get_return_values : () -> Data_Out
-  > Halts the current thread execution until the thread completes
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      get_return_values
+      <ArgumentExtra>() -> List[Data_Out]</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This halts the current thread execution until the processing completes and returns the value returned by `function`.
 
-* join : () -> JoinTerminatedStatus
-  > Halts the current thread execution until a thread completes or exceeds the timeout<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)
+    Simply invoke `ParallelProcessing.get_return_values()` on a thread object.
+    ```py
+    import thread
 
-* kill : (yielding: bool = False, timeout: float = 5) -> bool
-  > Schedules the thread to be killed<br />
-  > If yielding is True, it halts the current thread execution until the thread is killed or the timeout is exceeded<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadnotinitializederror)<br />
-  > **Raises** [`ThreadNotRunningError`](./exceptions.md#threadnotrunningerror)<br />
-  <Callout type="info">
-    This only schedules the thread to be killed, and does not immediately kill the thread
-  </Callout>
+    worker = thread.ParallelProcessing(function = my_func, dataset = [1, 2, 3])
+    worker.get_return_values()
+    ```
+
+    <Callout>
+      Exceptions Raised
+      <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
+
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      join
+      <ArgumentExtra>(timeout: float = None) -> bool</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This halts the current thread execution until the `ParallelProcessing` completes or exceeds the timeout.
+
+    A None value for timeout will have the same effect as passing `float("inf")` as a timeout.
+    The boolean returned by `ParallelProcessing.join()` is `True` if the threads complete within the timeout and `False` if otherwise.
+
+    Simply invoke `ParallelProcessing.join()` on a ParallelProcessing object.
+    ```py
+    import thread
+    worker = thread.ParallelProcessing(function = my_func, dataset = [1, 2, 3])
+    worker.join(5)
+    worker.join()
+    ```
+
+    <Callout>
+      Exceptions Raised
+      <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper title='kill' ofType='(yielding: bool = False, timeout: float = 5) -> bool'>
+  <summary>
+    <strong className='text-lg'>
+      kill
+      <ArgumentExtra>(yielding: bool = False, timeout: float = 5) -> bool</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This schedules the threads to be killed.
+
+    If yielding is True, it halts the current thread execution until the threads are killed or the timeout is exceeded.
+    Similar to `ParallelProcessing.join()`, a None value for timeout will have the same effect as passing `float("inf")` as a timeout.
+
+    Simply invoke `ParallelProcessing.kill()` on a ParallelProcessing object.
+    ```py
+    import thread
+
+    worker = thread.ParallelProcessing(function = my_func, dataset = [1, 2, 3])
+    worker.kill(True, 10)
+    worker.kill(False)
+    worker.kill()
+    ```
+
+    <Callout>
+      Exceptions Raised
+      <TabbedData type='exception' keys={['ThreadNotInitializedError', 'ThreadNotRunningError']} />
+    </Callout>
+
+    <Callout type='warning'>
+      This only schedules the threads to be killed, and does not immediately kill the threads.
+
+      Meaning that if `function` has a long `time.wait()` call, it will only be killed after it moves onto the next line.
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
 
 Now you know how to use the [`ParallelProcessing`](#importing-the-class) class!
 
