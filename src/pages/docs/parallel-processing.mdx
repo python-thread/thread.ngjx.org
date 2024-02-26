@@ -1,4 +1,4 @@
-import { Callout } from 'nextra/components'
+import { Callout, Steps } from 'nextra/components'
 
 # Parallel Processing Documentation
 
@@ -6,13 +6,30 @@ Documentation for `thread.ParallelProcessing`.
 
 
 
-## Importing the class
+## Why Parallel Processing?
 
+Parallel Processing is used to speed up the data processing of large datasets by splitting workflow into multiple threads.
+
+Traditionally, this is achieved with a for loop.
 ```py
-from thread import ParallelProcessing
+my_dataset = [] # Large dataset
+def my_data_processor(Data_In) -> Data_Out:
+  ...
+
+processed_data = []
+for data in my_dataset:
+  processed_data = my_data_processor(data)
+
+print(processed_data) # Processed data
 ```
 
+While this is simple and decent enough for a small dataset, this is not ideal for large datasets, especially when runtime matters.
+By using `thread.ParallelProcessing` we can split the large dataset into multiple chunks and process each chunk simultaneously.
 
+<Callout>
+  Parallel Processing is not True Parallel.
+  Learn more [here](/learn/cautions/parallelism).
+</Callout>
 
 ## How does it work?
 
