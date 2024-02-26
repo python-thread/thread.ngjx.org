@@ -141,13 +141,16 @@ my_processor.start()
 You can decorate a function with `thread.processor` which uses `thread.ParallelProcessing`.
 When the decorated function is invoked, it will automatically be ran in a new thread each time and return a `thread.ParallelProcessing` object.
 
+A decorated function's signature is overwritten, replacing the first argument to require a sequence of the `Data_In` type.
+
 ```python
 import thread
 
 @thread.processor
-def my_target(Data_In) -> Data_Out: ...
+def my_target(Data_In, arg1, arg2, *, arg3: bool = False) -> Data_Out: ...
 
-worker = my_target(dataset) # thread.ParallelProcessing()
+dataset: Sequence[type[Data_In]]
+worker = my_target(dataset, arg1, arg2, arg3 = True) # thread.ParallelProcessing()
 ```
 
 <Callout type='info'>
