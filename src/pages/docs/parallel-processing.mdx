@@ -317,13 +317,55 @@ These are attributes of `thread.ParallelProcessing` class.
 
 These are methods of `thread.ParallelProcessing` class.
 
-* start : () -> None
-  > Initializes the threads and starts it<br />
-  > **Raises** [`ThreadStillRunningError`](./exceptions.md#threadStillRunningError)
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      start
+      <ArgumentExtra>() -> None</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This starts the thread.
 
-* is_alive : () -> bool
-  > Indicates whether the thread is still alive<br />
-  > **Raises** [`ThreadNotInitializedError`](./exceptions.md#threadNotInitializedError)
+    Simply invoke `Thread.start()` on a thread object.
+    ```py
+    import thread
+
+    worker = thread.Thread(target = my_target)
+    worker.start()
+    ```
+
+    <Callout>
+      Exceptions Raised
+      <TabbedData type='exception' keys={['ThreadStillRunningError']} />
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      is_alive
+      <ArgumentExtra>() -> bool</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This indicates whether the thread is still alive.
+
+    Simply invoke `Thread.is_alive()` on a thread object.
+    ```py
+    import thread
+
+    worker = thread.Thread(target = my_target)
+    worker.is_alive()
+    ```
+
+    <Callout>
+      Exceptions Raised
+      <TabbedData type='exception' keys={['ThreadNotInitializedError']} />
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
 
 * get_return_values : () -> Data_Out
   > Halts the current thread execution until the thread completes
