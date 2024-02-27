@@ -8,6 +8,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/python-thread/thread'
   },
+  docsRepositoryBase: 'https://github.com/python-thread/thread.ngjx.org/tree/main',
   chat: {
     link: 'https://discord.gg/WTAvycRmqP'
   },
