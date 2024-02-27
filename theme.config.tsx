@@ -16,6 +16,9 @@ const config: DocsThemeConfig = {
     return {
       titleTemplate: '%s – thread'
     }
+  },
+  sidebar: {
+    defaultMenuCollapseLevel: 1
   }
 }
 
