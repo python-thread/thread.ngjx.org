@@ -20,7 +20,8 @@ const config: DocsThemeConfig = {
   sidebar: {
     defaultMenuCollapseLevel: 1,
     toggleButton: true
-  }
+  },
+  toc: { backToTop: true }
 }
 
 export default config
