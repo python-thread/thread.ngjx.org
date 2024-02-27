@@ -18,7 +18,8 @@ const config: DocsThemeConfig = {
     }
   },
   sidebar: {
-    defaultMenuCollapseLevel: 1
+    defaultMenuCollapseLevel: 1,
+    toggleButton: true
   }
 }
 
