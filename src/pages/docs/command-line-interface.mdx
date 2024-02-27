@@ -169,30 +169,58 @@ Invokes the [ParallelProcessing](/docs/parallel-processing#importing-the-class) 
 
 #### Examples
 
+<Tabs items={['Interpreted', 'Imported']}>
+  <Tabs.Tab>
+    Say you wanted to generate a list of the square of every number from 0 to 999.
+    ```sh
+    thread process 'lambda x: x**2' '[ i for i in range(1000) ]'
+    ```
 
-> **Example Usage**
-```sh
-$ thread process 'lambda x: x**2' '[ i for i in range(1000) ]'
-=> Writes to "output.json" every number from 0 to 1000 squared.
+    This is functionally equivalent to:
+    ```py
+    import thread
 
-$ thread process home.Downloads.clean_data:clean ./dataset.csv -t 20
-=> The same as:
-  from home.Downloads.clean_data import clean
-  dataset = open('./dataset.csv', 'r')
+    # Start processing
+    worker = thread.ParallelProcessing(
+      function = lambda x: x**2,
+      dataset = [ i for i in range(1000) ]
+    )
+    worker.start()
+    worker.join()
 
-  newProcess = ParallelProcess(
-    target = clean,
-    dataset = dataset,
-    max_threads = 20
-  )
-  newProcess.start()
-  dataset.close()
+    # Write output to "./output.json"
+    with open('./output.json', 'w') as output:
+      output.write(worker.results)
+    ```
 
-  prints or writes to file the result
-```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Say you have a `csv` file at `./dirty_data.csv` and want to parse every line into a `clean` function in `./clean_data.py`.
+    ```sh
+    thread process 'clean_data:clean' './dirty_data.csv'
+    ```
 
+    This is functionally equivalent to:
+    ```py
+    import thread
+    from .clean_data import clean
 
+    # Read files
+    with open('./dataset.csv', 'r') as dataset:
+      data = dataset.readlines()
 
-Now you know how to use the [`Thread CLI`](#cli-documentation)!
+    # Starts processing
+    worker = thread.ParallelProcessing(
+      function = clean,
+      dataset = data,
+    )
+    worker.start()
+    worker.join()
 
-[See here](./parallel-processing.md) for how to using the `thread.ParallelProcessing` class!
+    # Writes to "output.json"
+    with open('./output.json', 'w') as output:
+      output.write(worker.results)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
