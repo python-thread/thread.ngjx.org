@@ -1,4 +1,6 @@
-export default {
+import type { DocsThemeConfig } from 'nextra-theme-docs'
+
+const config: DocsThemeConfig = {
   logo: <span>thread</span>,
   footer: {
     text: `Copyright (c) ${(new Date()).getFullYear()}, thread.ngjx.org | All rights reserved`
@@ -15,3 +17,5 @@ export default {
     }
   }
 }
+
+export default config
