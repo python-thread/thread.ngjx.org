@@ -29,10 +29,10 @@ const Head = () => {
       <meta httpEquiv='Content-Language' content='en' />
 
       {/* Icons */}
-      <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
       <link rel='icon' href='/favicon.png' type='image/png' />
-      <link rel='icon' href='/favicon-dark.svg' type='image/svg+xml' media='(prefers-color-scheme: dark)' />
+      <link rel='icon' href='/favicon.ico' type='image/x-icon' />
       <link rel='icon' href='/favicon-dark.png' type='image/png' media='(prefers-color-scheme: dark)' />
+      <link rel='icon' href='/favicon-dark.ico' type='image/x-icon' media='(prefers-color-scheme: dark)' />
 
       {/* Description */}
       <meta name='description' content='Your python threading solution ♡⸜(˶˃ ᵕ ˂˶)⸝♡' />
