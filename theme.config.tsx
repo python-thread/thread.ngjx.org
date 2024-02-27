@@ -1,10 +1,22 @@
 import type { DocsThemeConfig } from 'nextra-theme-docs'
 
+
+const logo = <span>thread</span>
+const footer = (
+  <div className='flex w-full flex-col items-center sm:items-start'>
+    <div className='text-lg font-semibold'>
+      Your threading solution ♡⸜(˶˃ ᵕ ˂˶)⸝♡
+    </div>
+    <div className='mt-6 text-xs'>
+      Copyright (c) {(new Date()).getFullYear()}, thread.ngjx.org | All rights reserved
+    </div>
+  </div>
+)
+
+
 const config: DocsThemeConfig = {
-  logo: <span>thread</span>,
-  footer: {
-    text: `Copyright (c) ${(new Date()).getFullYear()}, thread.ngjx.org | All rights reserved`
-  },
+  logo: logo,
+  footer: { text: footer },
   project: {
     link: 'https://github.com/python-thread/thread'
   },
