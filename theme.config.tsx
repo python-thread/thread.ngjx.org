@@ -1,8 +1,8 @@
 import type { DocsThemeConfig } from 'nextra-theme-docs'
 
 
-const logo = <span>thread</span>
-const footer = (
+const Logo = <span>thread</span>
+const Footer = (
   <div className='flex w-full flex-col items-center sm:items-start'>
     <div className='text-lg font-semibold'>
       Your threading solution ♡⸜(˶˃ ᵕ ˂˶)⸝♡
@@ -15,8 +15,8 @@ const footer = (
 
 
 const config: DocsThemeConfig = {
-  logo: logo,
-  footer: { text: footer },
+  logo: Logo,
+  head: Head,
   project: {
     link: 'https://github.com/python-thread/thread'
   },
