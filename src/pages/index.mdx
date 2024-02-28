@@ -1,6 +1,16 @@
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { PackageManager } from '@components/typewriter'
 
+
+
+export function SmoothScroll({ scrollTo, children, ...props }) {return (
+  <button {...props} onClick={() => document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth' })} >
+    {children}
+  </button>
+)}
+
+
+
 <div className="flex-col flex">
 
   {/* Section 1 */}
@@ -9,9 +19,9 @@ import { PackageManager } from '@components/typewriter'
       <h1 className='text-4xl font-bold'>Thread - v1.0.0</h1>
       <div className="text-center"><PackageManager /></div>
     </div>
-    <a href='#' className='absolute flex left-1/2 -translate-x-1/2 items-center justify-center' style={{ top: 'calc(100vh - 64px - 20px)' }}>
+    <SmoothScroll scrollTo='features' className='absolute flex left-1/2 -translate-x-1/2 items-center justify-center' style={{ top: 'calc(100vh - 64px)' }}>
       <ChevronDownIcon className='w-8 h-8' />
-    </a>
+    </SmoothScroll>
   </section>
 
 </div>
