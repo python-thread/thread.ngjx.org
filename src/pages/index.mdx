@@ -1,8 +1,18 @@
+import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { PackageManager } from '@components/typewriter'
 
-<div className="h-full flex items-center justify-center">
-  <div className="mb-16">
-    <h1 className='text-4xl font-bold'>Thread - v1.0.0</h1>
-    <div className="text-center"><PackageManager /></div>
-  </div>
+<div className="flex-col flex">
+
+  {/* Section 1 */}
+  <section id='top'>
+    <div className='h-full justify-center pb-16 text-center items-center flex flex-col gap-4' style={{ height: 'calc(100vh - 64px)' }}>
+      <h1 className='text-4xl font-bold'>Thread - v1.0.0</h1>
+      <div className="text-center"><PackageManager /></div>
+    </div>
+    <a href='#hi' className='absolute flex left-1/2 items-center justify-center' style={{ top: 'calc(100vh - 64px - 20px)' }}>
+      <ChevronDownIcon className='w-8 h-8' />
+    </a>
+  </section>
+
 </div>
+
