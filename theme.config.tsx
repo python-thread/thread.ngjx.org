@@ -2,8 +2,11 @@ import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import type { DocsThemeConfig } from 'nextra-theme-docs'
 
+import { Poppins } from 'next/font/google'
+const logoFont = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], style: ['normal'] })
 
-const Logo = <span>thread</span>
+
+const Logo = <span className='text-xl font-bold' style={logoFont}>thread</span>
 const Footer = (
   <div className='flex w-full flex-col items-center sm:items-start'>
     <div className='text-lg font-semibold'>
