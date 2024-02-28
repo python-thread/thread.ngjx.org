@@ -11,6 +11,14 @@ export function SmoothScroll({ scrollTo, children, ...props }) {return (
   </button>
 )}
 
+export function Feature({ title, description, ...props }) {return (
+  <div {...props} className='flex flex-col gap-2 text-center border bg-neutral-200/90 dark:bg-neutral-800/90 rounded px-4 py-6'>
+    <p className='nx-mt-0 text-3xl font-bold'>{title}</p>
+    <p className='nx-mt-0'>{description}</p>
+  </div>
+)}
+
+
 
 
 <div className="flex-col flex">
@@ -30,6 +38,18 @@ export function SmoothScroll({ scrollTo, children, ...props }) {return (
     <SmoothScroll scrollTo='features' className='absolute flex left-1/2 -translate-x-1/2 items-center justify-center' style={{ top: 'calc(100vh - 64px)' }}>
       <ChevronDownIcon className='w-8 h-8' />
     </SmoothScroll>
+  </section>
+
+
+  {/* Section 2 */}
+  <section id='features'>
+    <div className='py-4 flex flex-col gap-4 justify-center items-center' style={{ height: 'calc(100vh - 64px)' }}>
+      <h2 className='text-5xl font-bold mb-10 text-center'>Features</h2>
+      <div className='flex flex-wrap gap-8'>
+        <Feature title='Graceful shutdown' description='Placeholder' />
+        <Feature title='Data Processing' description='Placeholder' />
+      </div>
+    </div>
   </section>
 
 </div>
