@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import type { DocsThemeConfig } from 'nextra-theme-docs'
@@ -6,7 +7,13 @@ import { Poppins } from 'next/font/google'
 const logoFont = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], style: ['normal'] })
 
 
-const Logo = <span className='text-xl font-bold text-black dark:text-white hover:text-black/95 dark:hover:text-white/95 transition-all' style={logoFont.style}>thread</span>
+const Logo = (
+  <div className='flex flex-row gap-2 justify-center items-center'>
+    <Image width={32} height={32} src='/favicon-dark.png' alt='' className='hidden dark:flex' />
+    <Image width={32} height={32} src='/favicon.png' alt='' className='flex dark:hidden' />
+    <span className='text-xl font-bold text-black dark:text-white hover:text-black/95 dark:hover:text-white/95 transition-all' style={logoFont.style}>thread</span>
+  </div>
+)
 const Footer = (
   <div className='flex w-full flex-col items-center sm:items-start'>
     <div className='text-lg font-semibold'>
