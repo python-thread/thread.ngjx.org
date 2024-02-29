@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { ChevronDownIcon } from '@radix-ui/react-icons'
+import { ChevronDownIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { PackageManager } from '@components/typewriter'
 
 
@@ -11,10 +11,20 @@ export function SmoothScroll({ scrollTo, children, ...props }) {return (
   </button>
 )}
 
-export function Feature({ title, description, ...props }) {return (
-  <div {...props} className='flex flex-col gap-2 text-center border bg-neutral-200/90 dark:bg-neutral-800/90 rounded px-4 py-6'>
-    <p className='nx-mt-0 text-3xl font-bold'>{title}</p>
-    <p className='nx-mt-0'>{description}</p>
+export function Feature({ title, description, version = false, href = false, ...props }) {return (
+  <div {...props} className='flex flex-col h-96 w-72 justify-center border dark:border-neutral-800 bg-neutral-100/90 dark:bg-neutral-900/80 relative rounded px-4 py-6'>
+    { version ? <p className='nx-mt-0 mb-1 text-xs bg-clip-text text-transparent bg-gradient-radial from-pink-500 to-violet-500'>{version}</p> : <div className='nx-mt-0 h-4 mb-1'></div>}
+    <p className='nx-mt-0 mb-2 text-2xl font-bold'>{title}</p>
+    <p className='nx-mt-0 text-sm font-normal text-neutral-600 dark:text-neutral-300'>{description}</p>
+    {href && (
+      <Link
+        href={href}
+        className='absolute bottom-4 right-4 text-neutral-600/80 dark:text-neutral-300/80 hover:text-neutral-600 dark:hover:text-neutral-300 flex items-center gap-1 hover:gap-2 hover:right-3 transition-all'
+      >
+        <span>Read More</span>
+        <ArrowRightIcon />
+      </Link>
+    )}
   </div>
 )}
 
@@ -45,9 +55,9 @@ export function Feature({ title, description, ...props }) {return (
   <section id='features'>
     <div className='py-4 flex flex-col gap-4 justify-center items-center' style={{ height: 'calc(100vh - 64px)' }}>
       <h2 className='text-5xl font-bold mb-10 text-center'>Features</h2>
-      <div className='flex flex-wrap gap-8'>
-        <Feature title='Graceful shutdown' description='Placeholder' />
-        <Feature title='Data Processing' description='Placeholder' />
+      <div className='flex flex-wrap gap-8 justify-center'>
+        <Feature title='Graceful shutdown' description='Automatically kill threads before exiting the program' href='/docs/thread-class#killing-threads---introduced-in-v012' version='^v0.1.2' />
+        <Feature title='Parallel Processing' description='Utilize multiple threads to process large amounts of data' href='/docs/parallel-processing' />
       </div>
     </div>
   </section>
