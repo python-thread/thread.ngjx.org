@@ -12,7 +12,7 @@ export function SmoothScroll({ scrollTo, children, ...props }) {return (
 )}
 
 export function Feature({ title, description, version = false, href = false, ...props }) {return (
-  <div {...props} className='flex flex-col h-96 w-72 justify-center border dark:border-neutral-800 bg-neutral-100/90 dark:bg-neutral-900/80 relative rounded px-4 py-6'>
+  <div {...props} className='flex flex-col h-96 w-72 justify-center border dark:border-neutral-800 bg-neutral-100/90 dark:bg-neutral-900/80 relative rounded px-4 py-6 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] overflow-hidden bg-[position:-100%_0,0_0] bg-no-repeat hover:transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]'>
     { version ? <p className='nx-mt-0 mb-1 text-xs bg-clip-text text-transparent bg-gradient-radial from-pink-500 to-violet-500'>{version}</p> : <div className='nx-mt-0 h-4 mb-1'></div>}
     <p className='nx-mt-0 mb-2 text-2xl font-bold'>{title}</p>
     <p className='nx-mt-0 text-sm font-normal text-neutral-600 dark:text-neutral-300'>{description}</p>
