@@ -6,7 +6,7 @@ import { Poppins } from 'next/font/google'
 const logoFont = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], style: ['normal'] })
 
 
-const Logo = <span className='text-xl font-bold text-black dark:text-white hover:text-black/95 dark:hover:text-white/95 transition-all' style={logoFont}>thread</span>
+const Logo = <span className='text-xl font-bold text-black dark:text-white hover:text-black/95 dark:hover:text-white/95 transition-all' style={logoFont.style}>thread</span>
 const Footer = (
   <div className='flex w-full flex-col items-center sm:items-start'>
     <div className='text-lg font-semibold'>
