@@ -16,6 +16,9 @@
     "title": "Learn"
   },
   "about": {
-    "title": "About"
+    "title": "About",
+    "theme": {
+      "timestamp": false
+    }
   }
 }
