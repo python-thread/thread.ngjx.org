@@ -5,5 +5,15 @@ const withNextra = require('nextra')({
   defaultShowCopyCode: true,
 })
 
+/** @type {import('next').NextConfig} */
+const NextConfig = {
+  images: {
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'avatars.githubusercontent.com',
+      pathname: '/u/*'
+    }]
+  }
+}
 
-module.exports = withNextra({})
+module.exports = withNextra(NextConfig)
