@@ -6,7 +6,8 @@
     "title": "thread",
     "display": "hidden",
     "theme": {
-      "layout": "full"
+      "layout": "full",
+      "timestamp": false
     }
   },
   "docs": {
