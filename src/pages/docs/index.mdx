@@ -1,29 +1,65 @@
-import { LightningBoltIcon, ExclamationTriangleIcon, GearIcon, MixIcon, CodeIcon } from '@radix-ui/react-icons'
-import { Cards, Card } from 'nextra/components'
+import Link from 'next/link'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
+
+import { cn } from '@utils'
 
 
+export const linkVariant = {
+  default: cn('bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700'),
+}
 
-# Introduction
+export function VersionLink({ variant='default', className, href, ...props }) {return (
+  <Link
+    {...props}
+    href={href}
+    target={href.startsWith('http') ? '_blank' : '_self'}
+    className={cn(
+      'flex items-center justify-center text-center gap-2 px-4 py-2 rounded-md transition-colors',
+      'text-neutral-800 dark:text-neutral-50',
+      'h-44',
+      linkVariant[variant],
+      className
+    )}
+  />
+)}
 
-This is `thread`, a Python library which extends Python's built-in `threading` library.
+export const statusVariant = {
+  latest: cn('bg-blue-200 dark:bg-blue-700/50'),
+  stable: cn('bg-green-200 dark:bg-green-800/50'),
+  beta: cn('bg-yellow-200 dark:bg-yellow-500/50'),
+  dev: cn('bg-purple-200 dark:bg-purple-700/50')
+}
+export function StatusBadge({ children, variant='beta', className }) {return <span className={cn('px-2 py-1 rounded-md nx-mt-0', statusVariant[variant], className)}>{children}</span>}
+export function Text({ children, className }) {return <p className={cn('text-sm font-medium nx-mt-0', className)}>{children}</p>}
 
 
+<div className='w-full flex-col flex items-center pt-12'>
 
-## Thread v1.0.0
+  # Releases
 
-You are viewing the documentation for the `v1.0.0` release.<br />
-This is the most recent stable release of `thread`.
+  This is a list of all the available releases.
 
+  <div className='flex flex-wrap items-center justify-center gap-8 mt-12'>
+    <VersionLink className='w-56 flex-col items-start' href='https://github.com/python-thread/thread'>
+      <div className='flex flex-row items-center gap-2'>
+        <ExternalLinkIcon className='w-6 h-6' />
+        <Text className='text-lg font-bold'>Development</Text>
+      </div>
+      <Text className='text-sm font-light text-left ml-4'>This is the latest ***in-development*** branch. This may be unstable.</Text>
+      <StatusBadge variant='dev' className='self-end mt-auto mb-1'>dev</StatusBadge>
+    </VersionLink>
+    <VersionLink className='w-56 flex-col justify-between items-start' href='/docs/latest'>
+      <div className='flex flex-row items-center gap-2'>
+        <ExternalLinkIcon className='w-6 h-6' />
+        <Text className='text-lg font-bold'>Latest 1.0.0</Text>
+      </div>
+      <Text className='text-sm font-light text-left ml-4'>This is the latest ***stable*** release.</Text>
+      <div className='flex flex-row self-end mt-auto mb-1 gap-2'>
+        <StatusBadge variant='latest'>latest</StatusBadge>
+        <StatusBadge variant='stable'>stable</StatusBadge>
+      </div>
+    </VersionLink>
+  </div>
 
-
-## Quick Start
-
-<Cards>
-  <Card href='/docs/installation' title='Installation' icon={<LightningBoltIcon />} />
-  <Card href='/docs/configuration' title='Configuration' icon={<GearIcon />} />
-  <Card href='/docs/thread-class' title='Thread Class' icon={<MixIcon />} />
-  <Card href='/docs/parallel-processing' title='Parallel Processing Class' icon={<MixIcon />} />
-  <Card href='/docs/exceptions' title='Exceptions' icon={<ExclamationTriangleIcon />} />
-  <Card href='/docs/command-line-interface' title='Command Line Interface' icon={<CodeIcon />} />
-</Cards>
+</div>
 
