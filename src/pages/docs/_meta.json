@@ -1,9 +1,2 @@
 {
-  "index": "Introduction",
-  "installation": "Installation",
-  "configuration": "Configuration",
-  "thread-class": "Thread Class",
-  "parallel-processing": "Parallel Processing",
-  "exceptions": "Exceptions",
-  "command-line-interface": "Command Line Interface"
 }
