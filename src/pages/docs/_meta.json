@@ -1,2 +1,14 @@
 {
+  "*": {
+    "type": "page"
+  },
+  "index": {
+    "title": "Documentation",
+    "display": "hidden",
+    "theme": {
+      "layout": "full",
+      "timestamp": false
+    }
+  },
+  "latest": "v1.0.0 Latest"
 }
