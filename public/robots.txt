@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://thread.ngjx.org/sitemap.xml
