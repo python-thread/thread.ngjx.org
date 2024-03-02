@@ -14,7 +14,14 @@ const NextConfig = {
       hostname: 'avatars.githubusercontent.com',
       pathname: '/u/*'
     }]
-  }
+  },
+  redirects: async () => ([
+    {
+      source: '/docs/v1.:major.:minor/:slug*',
+      destination: '/docs/latest/:slug*',
+      permanent: false
+    }
+  ])
 }
 
 module.exports = withNextra(NextConfig)
