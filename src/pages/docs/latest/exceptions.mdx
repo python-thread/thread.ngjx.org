@@ -12,7 +12,7 @@ Don't have the thread library? [See here](./installation) for installing thread
 
 
 
-### Supressing Exceptions
+### Suppressing Exceptions
 When initializing a thread, you can parse a `suppress_errors` boolean. When a 
 exception is raised it is stored in the `Thread._errors` attribute. By default this
 is set to false.
@@ -95,7 +95,7 @@ This is the base exception class that all exceptions inherit from.
 
 This exception is raised when you attempt to invoke a method that requires the thread to not be running, but the thread is currently running.
 > You can wait for the thread to terminate with [**Thread.join()**](.thread-class#methods) before invoking the method<br />
-> You can check if the thread is running with [**Thread.is_alive()**](thread-class#methodss) before invoking the method
+> You can check if the thread is running with [**Thread.is_alive()**](thread-class#methods) before invoking the method
 
 
 
@@ -109,7 +109,7 @@ This is raised when you attempt to invoke a method which requires the thread to 
 
 ### ThreadNotInitializedError
 
-This exception is raised when you attempt to invoke a method that requires the thread to initialized, but the thread is not initalized.
+This exception is raised when you attempt to invoke a method that requires the thread to initialized, but the thread is not initialized.
 > You can initialize and start the thread with [**Thread.start()**](thread-class#methods) before invoking the method
 
 
