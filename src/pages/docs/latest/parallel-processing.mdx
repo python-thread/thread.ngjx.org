@@ -23,8 +23,8 @@ export function ArgumentExtra({ children, className, ...props }) {return (
 
 export function TabbedData({ type, keys = [] }) {return (
   <Tabs items={keys}>
-    {keys.map(key => (
-      <Tabs.Tab>{type === 'status' ? ThreadStatuses[key] : ThreadExceptions[key]}</Tabs.Tab>
+    {keys.map((key, i) => (
+      <Tabs.Tab key={i}>{type === 'status' ? ThreadStatuses[key] : ThreadExceptions[key]}</Tabs.Tab>
     ))}
   </Tabs>
 )}
