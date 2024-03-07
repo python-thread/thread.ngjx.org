@@ -1,9 +1,14 @@
 {
-  "index": "Introduction",
-  "thread-class": "Thread Class",
-  "installation": "Installation",
-  "configuration": "Configuration",
-  "command-line-interface": "Command Line Interface",
-  "parallel-processing": "Parallel Processing",
-  "exceptions": "Exceptions"
+  "*": {
+    "type": "page"
+  },
+  "index": {
+    "title": "Documentation",
+    "display": "hidden",
+    "theme": {
+      "layout": "full",
+      "timestamp": false
+    }
+  },
+  "latest": "v1.0.0 Latest"
 }
