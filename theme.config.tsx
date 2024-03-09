@@ -26,9 +26,7 @@ const Footer = (
 )
 const Head = () => {
   const { title } = useConfig()
-  const { route } = useRouter()
-
-  const socialImage = `https://thread.ngjx.org/api/og${route === '/' || !title ? '' : `?title=${title}`}`
+  const socialImage = 'https://thread.ngjx.org/socialcard-white.jpg'
 
   return (
     <>
