@@ -1,9 +1,46 @@
 {
+  "*": {
+    "type": "page"
+  },
   "index": {
     "title": "thread",
+    "display": "hidden",
     "theme": {
       "layout": "full",
-      "typesetting": "article"
+      "timestamp": false
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "type": "menu",
+    "items": {
+      "development-progress": {
+        "title": "1.X.X Development",
+        "href": "https://github.com/python-thread/thread",
+        "newWindow": true
+      },
+      "latest-release": {
+        "title": "1.0.0 Latest Release",
+        "href": "/docs/latest"
+      },
+      "all-releases": {
+        "title": "All Releases",
+        "href": "/docs"
+      }
+    }
+  },
+  "learn": {
+    "title": "Learn"
+  },
+  "about": {
+    "title": "About",
+    "theme": {
+      "timestamp": false
+    }
+  },
+  "404": {
+    "theme": {
+      "timestamp": false
     }
   }
 }
