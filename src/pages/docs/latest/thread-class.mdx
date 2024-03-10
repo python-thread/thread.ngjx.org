@@ -54,7 +54,7 @@ from thread import Thread
 There are main 2 ways of initializing a thread.
 
 ### On-Demand
-You can create a simple thread by initializing `thread.Thread` and parsing the `target` function.
+You can create a simple thread by initializing `thread.Thread` and passing the `target` function.
 ```python
 def my_target(): ...
 
@@ -493,7 +493,7 @@ These are methods of `thread.Thread` class.
   <ArgumentBody>
     This adds a hook to the thread.
 
-    Hooks are invoked in the worker thread after the thread successfully completes, parsing `Data_Out` as the first argument.
+    Hooks are invoked in the worker thread after the thread successfully completes, passing `Data_Out` as the first argument.
     If a hook errors, the exception is recorded to `Thread.errors`, and is only propagated in the main thread when `Thread.join()`, `Thread.get_return_value()` or `Thread.result` is invoked.
 
     Simply invoke `Thread.add_hook(hook)` on a thread object.
