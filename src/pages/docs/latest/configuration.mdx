@@ -64,3 +64,42 @@ from thread import Settings
   </ArgumentBody>
 </ArgumentWrapper>
 
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      VERBOSITY
+      <ArgumentExtra>VerbosityLevel</ArgumentExtra>
+      <ArgumentExtra>(default: 'normal')</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    Adjust what is printed to the terminal.
+    <Callout type='info'>
+      This feature is only available in `thread ^v1.0.1`
+    </Callout>
+
+      Simply invoke `Setting.set_verbosity(level)` to set the verbosity level.
+      ```py
+      from thread import Settings
+
+      Settings.set_verbosity(1)
+      Settings.set_verbosity('normal')
+      ```
+
+      `Settings.VERBOSITY` can be compared against strings and integers and other `Verbosity` objects.
+      ```py
+      from thread.utils.config import Verbosity, Settings
+
+      # Mapping
+      Verbosity(0) == Verbosity('quiet')
+      Verbosity(1) == Verbosity('normal')
+      Verbosity(2) == Verbosity('verbose')
+
+      # Comparison
+      Verbosity(0) < 1          # True
+      Verbosity(1) < 'verbose'  # True
+      Verbosity(2) == 'verbose' # True
+      ```
+  </ArgumentBody>
+</ArgumentWrapper>
+
