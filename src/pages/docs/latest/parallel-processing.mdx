@@ -1,5 +1,6 @@
 import { cn } from '@utils'
 import { Callout, Steps, Tabs } from 'nextra/components'
+import { CheckIcon, Cross2Icon, DotFilledIcon } from '@radix-ui/react-icons'
 import { Statuses, ThreadStatuses, ThreadExceptions } from '@components/typedata'
 
 
@@ -27,6 +28,12 @@ export function TabbedData({ type, keys = [] }) {return (
       <Tabs.Tab key={i}>{type === 'status' ? ThreadStatuses[key] : ThreadExceptions[key]}</Tabs.Tab>
     ))}
   </Tabs>
+)}
+
+export function Text({ children, className, ...props }) {return (
+  <p {...props} className={cn('nx-mt-0', className)}>
+    {children}
+  </p>
 )}
 
 
@@ -169,6 +176,87 @@ worker = my_target(dataset, arg1, arg2, arg3 = True) # thread.ParallelProcessing
 </Callout>
 
 
+### Compatibility
+Data processing is usually achieved with external libraries like `pandas`.
+However, there is no native support for dataset objects without both of the **\_\_len\_\_()** and **\_\_getitem\_\_()** methods.
+
+#### This is primarily because:
+* The `__len__()` method is used to determine the length of the dataset using the `len(dataset)` method.
+* The `__getitem__()` method is used to access the dataset using the `dataset[index]` method.
+
+This is also why `thread.ParallelProcessing` does not support `Generator` objects or `Iterator` objects.
+
+#### Work-arounds
+The following outlines how you may use `thread.ParallelProcessing` with these libraries.
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      thread v1.0.1 and below
+    </strong>
+  </summary>
+  <ArgumentBody>
+    We recommend first converting the dataset to a supported dataset type like a `list` or `tuple` before using `thread.ParallelProcessing`.
+    ```py
+    from thread import ParallelProcessing
+
+    myDataFrame: ...
+
+    compatibleDataset = [ ... ] # Convert to a supported dataset type
+
+    process = ParallelProcessing(function = lambda x: x + 1, dataset = compatibleDataset)
+    ```
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      thread v1.1.0 and above
+    </strong>
+  </summary>
+  <ArgumentBody>
+    We now non-natively support all most dataset types.
+
+    We stopped explicitly supporting the `Sequence` type and instead now use `Protocol`s to check if `__len__()` or `__getitem__()` are implemented.
+    We also added context-specific optional/required `_length` and `_get_value` arguments when initializing `thread.ParallelProcessing`.
+
+    You can find out more about the valid __length_ and _get_value_ arguments [here](#optional).
+
+    ##### Mapping
+    <Text className='flex flex-row items-center gap-1 nx-my-2 mt-4'><DotFilledIcon className='w-5 h-5 mr-4' /> <Cross2Icon className='w-5 h-5' /> <Cross2Icon className='w-5 h-5 mr-2' /> Has `__len__` and `__getitem__`</Text>
+    <Text className='flex flex-row items-center gap-1 mx-my-2 mt-2'><DotFilledIcon className='w-5 h-5 mr-4' /> <CheckIcon className='w-5 h-5 text-green-600' /> <CheckIcon className='w-5 h-5 text-blue-600 mr-2' /> Does not have `__len__` and `__getitem__`</Text>
+    <Text className='flex flex-row items-center gap-1 mx-my-2 mt-2'><DotFilledIcon className='w-5 h-5 mr-4' /> <CheckIcon className='w-5 h-5 text-green-600' /> <Cross2Icon className='w-5 h-5 mr-2' /> Does not have `__len__` and has `__getitem__`</Text>
+    <Text className='flex flex-row items-center gap-1 mx-my-2 mt-2'><DotFilledIcon className='w-5 h-5 mr-4' /> <Cross2Icon className='w-5 h-5' /> <CheckIcon className='w-5 h-5 text-blue-600 mr-2' /> Has `__len__` and does not have `__getitem__`</Text>
+
+    <div className='flex flex-wrap gap-4 mt-4'>
+      <Text className='flex flex-row gap-1 text-sm'><CheckIcon className='w-4 h-4 my-auto text-green-600' /> **_length** Required</Text>
+      <Text className='flex flex-row gap-1 text-sm'><CheckIcon className='w-4 h-4 my-auto text-blue-600' /> **_get_value** Required</Text>
+    </div>
+
+    ##### Example
+    Now you do not have to pre-convert the dataset to a supported dataset type.
+
+    ```py
+    from thread import ParallelProcessing
+
+    myDataFrame: ...
+
+    process = ParallelProcessing(
+      function = lambda x: x + 1,
+      dataset = myDataFrame,
+      _length = myDataFrame.getLength(),
+      _get_value = lambda d, i: d.getIndex(i)
+    )
+    ```
+
+    <Callout type='info'>
+      Static type checking will reflect the whether `_length` and `_get_value` are required or optional depending on the dataset type.
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
+
+
 
 ## Initialization
 
@@ -230,11 +318,15 @@ This will cover the required and optional arguments initializing a parallel proc
   <summary>
     <strong className='text-lg'>
       dataset
-      <ArgumentExtra>Sequence[Data_In]</ArgumentExtra>
+      <ArgumentExtra>Dataset[Data_In]</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
     This should be an interable sequence of data parsed as the first argument to `function`.
+
+    <Callout type='info'>
+      This can be of any type if you pass the according `_length` and `_get_value` arguments in **v1.1.0+**. See [here](#compatibility) for more details.
+    </Callout>
 
     ```py
     import thread
@@ -250,6 +342,91 @@ This will cover the required and optional arguments initializing a parallel proc
 
 
 ### Optional
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      max_threads
+      <ArgumentExtra>int</ArgumentExtra>
+      <ArgumentExtra>(default: 8)</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This is the maximum number of threads that will be created by `thread.ParallelProcessing`.
+
+    <Callout type='warning'>
+      This value is not always the number of threads created. See [here](#determine-thread-count) for more details.
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      _get_value
+      <ArgumentExtra>(Dataset, int) -> Data_Out</ArgumentExtra>
+      <ArgumentExtra>(default: None)</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    <Callout type='info'>This is only available in v1.1.0+</Callout>
+    <Callout type='warning'>This can be a **required** argument depending on the `dataset` type. See [here](#compatibility) for more details.</Callout>
+
+    This is invoked every time a value is retrieved from the dataset.
+    ```py
+    from thread import ParallelProcessing
+
+    dataset: MyDatasetType = ...
+
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _get_value = lambda d, index: d[index],
+    )
+
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _get_value = lambda d, index: d.getIndex(index),
+    )
+    ```
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      _length
+      <ArgumentExtra>int | (Dataset) -> Data_In</ArgumentExtra>
+      <ArgumentExtra>(default: dataset.__len__)</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    <Callout type='info'>This is only available in v1.1.0+</Callout>
+    <Callout type='warning'>This can be a **required** argument depending on the `dataset` type. See [here](#compatibility) for more details.</Callout>
+
+    This is the length of the dataset that will be processed by `thread.ParallelProcessing`.
+
+    This is invoked only once when `thread.ParallelProcessing` is initialized.
+    ```py
+    from thread import ParallelProcessing
+
+    dataset: MyDatasetType = ...
+
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _length = 5,
+    )
+
+    def get_length(dataset: MyDatasetType) -> int: ...
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _length = get_length,
+    )
+    ```
+  </ArgumentBody>
+</ArgumentWrapper>
 
 <ArgumentWrapper>
   <summary>
