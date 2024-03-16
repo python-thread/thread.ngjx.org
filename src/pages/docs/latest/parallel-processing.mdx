@@ -324,6 +324,10 @@ This will cover the required and optional arguments initializing a parallel proc
   <ArgumentBody>
     This should be an interable sequence of data parsed as the first argument to `function`.
 
+    <Callout type='info'>
+      This can be of any type if you pass the according `_length` and `_get_value` arguments in **v1.1.0+**. See [here](#compatibility) for more details.
+    </Callout>
+
     ```py
     import thread
 
@@ -352,6 +356,75 @@ This will cover the required and optional arguments initializing a parallel proc
     <Callout type='warning'>
       This value is not always the number of threads created. See [here](#determine-thread-count) for more details.
     </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      _get_value
+      <ArgumentExtra>(Dataset, int) -> Data_Out</ArgumentExtra>
+      <ArgumentExtra>(default: None)</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    <Callout type='info'>This is only available in v1.1.0+</Callout>
+    <Callout type='warning'>This can be a **required** argument depending on the `dataset` type. See [here](#compatibility) for more details.</Callout>
+
+    This is invoked every time a value is retrieved from the dataset.
+    ```py
+    from thread import ParallelProcessing
+
+    dataset: MyDatasetType = ...
+
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _get_value = lambda d, index: d[index],
+    )
+
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _get_value = lambda d, index: d.getIndex(index),
+    )
+    ```
+  </ArgumentBody>
+</ArgumentWrapper>
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      _length
+      <ArgumentExtra>int | (Dataset) -> Data_In</ArgumentExtra>
+      <ArgumentExtra>(default: dataset.__len__)</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    <Callout type='info'>This is only available in v1.1.0+</Callout>
+    <Callout type='warning'>This can be a **required** argument depending on the `dataset` type. See [here](#compatibility) for more details.</Callout>
+
+    This is the length of the dataset that will be processed by `thread.ParallelProcessing`.
+
+    This is invoked only once when `thread.ParallelProcessing` is initialized.
+    ```py
+    from thread import ParallelProcessing
+
+    dataset: MyDatasetType = ...
+
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _length = 5,
+    )
+
+    def get_length(dataset: MyDatasetType) -> int: ...
+    ParallelProcessing(
+      function = my_function,
+      dataset = dataset,
+      _length = get_length,
+    )
+    ```
   </ArgumentBody>
 </ArgumentWrapper>
 
