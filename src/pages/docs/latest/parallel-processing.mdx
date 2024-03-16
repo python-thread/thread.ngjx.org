@@ -169,6 +169,40 @@ worker = my_target(dataset, arg1, arg2, arg3 = True) # thread.ParallelProcessing
 </Callout>
 
 
+### Compatibility
+Data processing is usually achieved with external libraries like `pandas`.
+However, there is no native support for dataset objects without both of the **\_\_len\_\_()** and **\_\_getitem\_\_()** methods.
+
+#### This is primarily because:
+* The `__len__()` method is used to determine the length of the dataset using the `len(dataset)` method.
+* The `__getitem__()` method is used to access the dataset using the `dataset[index]` method.
+
+This is also why `thread.ParallelProcessing` does not support `Generator` objects or `Iterator` objects.
+
+#### Work-arounds
+The following outlines how you may use `thread.ParallelProcessing` with these libraries.
+
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      thread v1.0.1 and below
+    </strong>
+  </summary>
+  <ArgumentBody>
+    We recommend first converting the dataset to a supported dataset type like a `list` or `tuple` before using `thread.ParallelProcessing`.
+    ```py
+    from thread import ParallelProcessing
+
+    myDataFrame: ...
+
+    compatibleDataset = [ ... ] # Convert to a supported dataset type
+
+    process = ParallelProcessing(function = lambda x: x + 1, dataset = compatibleDataset)
+    ```
+  </ArgumentBody>
+</ArgumentWrapper>
+
+
 
 ## Initialization
 
