@@ -338,6 +338,22 @@ This will cover the required and optional arguments initializing a parallel proc
 
 
 ### Optional
+<ArgumentWrapper>
+  <summary>
+    <strong className='text-lg'>
+      max_threads
+      <ArgumentExtra>int</ArgumentExtra>
+      <ArgumentExtra>(default: 8)</ArgumentExtra>
+    </strong>
+  </summary>
+  <ArgumentBody>
+    This is the maximum number of threads that will be created by `thread.ParallelProcessing`.
+
+    <Callout type='warning'>
+      This value is not always the number of threads created. See [here](#determine-thread-count) for more details.
+    </Callout>
+  </ArgumentBody>
+</ArgumentWrapper>
 
 <ArgumentWrapper>
   <summary>
