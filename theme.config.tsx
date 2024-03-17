@@ -26,6 +26,9 @@ const Footer = (
 )
 const Head = () => {
   const { title } = useConfig()
+  const { route } = useRouter()
+
+  const pageTitle = route === '/' || !title ? 'Thread v1.1.1' : `${title} | Thread v1.1.1`
   const socialImage = 'https://thread.ngjx.org/socialcard-white.jpg'
 
   return (
@@ -50,7 +53,7 @@ const Head = () => {
 
       {/* OpenGraph */}
       <meta name='og:image' content={socialImage} />
-      <meta name='og:title' content={title ? title + ' - thread' : 'thread'} />
+      <meta name='og:title' content={pageTitle} />
 
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
@@ -78,8 +81,11 @@ const config: DocsThemeConfig = {
     link: 'https://discord.gg/WTAvycRmqP'
   },
   useNextSeoProps() {
-    return {
-      titleTemplate: '%s – thread'
+    const { asPath } = useRouter()
+    if (asPath !== '/') {
+      return {
+        titleTemplate: '%s | Thread v1.1.1',
+      }
     }
   },
   sidebar: {
