@@ -113,7 +113,7 @@ This will cover the required and optional arguments initializing a thread.
   <summary>
     <strong className='text-lg'>
       target
-      <ArgumentExtra>(*args, **kwargs) -> Data_Out</ArgumentExtra>
+      <ArgumentExtra>(*args, **kwargs) -&gt; Data_Out</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -411,7 +411,7 @@ These are attributes of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       hooks
-      <ArgumentExtra>List[(Data_Out) -> Any | None]</ArgumentExtra>
+      <ArgumentExtra>List[(Data_Out) -&gt; Any | None]</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -437,7 +437,7 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       start
-      <ArgumentExtra>() -> None</ArgumentExtra>
+      <ArgumentExtra>() -&gt; None</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -462,7 +462,7 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       is_alive
-      <ArgumentExtra>() -> bool</ArgumentExtra>
+      <ArgumentExtra>() -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -487,7 +487,7 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       add_hook
-      <ArgumentExtra>((Data_Out) -> Any | None) -> None</ArgumentExtra>
+      <ArgumentExtra>((Data_Out) -&gt; Any | None) -&gt; None</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -519,7 +519,7 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       get_return_value
-      <ArgumentExtra>() -> Data_Out</ArgumentExtra>
+      <ArgumentExtra>() -&gt; Data_Out</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -544,7 +544,7 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       join
-      <ArgumentExtra>(timeout: float = None) -> bool</ArgumentExtra>
+      <ArgumentExtra>(timeout: float = None) -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -572,7 +572,7 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       kill
-      <ArgumentExtra>(yielding: bool = False, timeout: float = 5) -> bool</ArgumentExtra>
+      <ArgumentExtra>(yielding: bool = False, timeout: float = 5) -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
