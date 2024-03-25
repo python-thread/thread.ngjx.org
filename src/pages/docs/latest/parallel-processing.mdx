@@ -268,14 +268,14 @@ This will cover the required and optional arguments initializing a parallel proc
   <summary>
     <strong className='text-lg'>
       function
-      <ArgumentExtra>(Data_In, *args, **kwargs) -> Data_Out</ArgumentExtra>
+      <ArgumentExtra>(Data_In, *args, **kwargs) -&gt; Data_Out</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
     This should be a function that takes in a data from the `dataset` with/without overloads and returns Data_Out.
 
     Arguments and keyword arguments excluding the first argument parsed to the `function` can be parsed through `args` and `kwargs`.
-    `Data_Out` will be written to the generated thread's `Thread._returned_value` and can be accessed via `ParallelProcessing.results` or `ParallelProcessing.get_return_values()`.
+    `Data_Out` will be written to the generated thread&apos;s `Thread._returned_value` and can be accessed via `ParallelProcessing.results` or `ParallelProcessing.get_return_values()`.
 
     `function` can be parsed as the first argument to `ParallelProcessing.__init__()`, although it is recommended to use only keyword arguments.
     ```py
@@ -363,7 +363,7 @@ This will cover the required and optional arguments initializing a parallel proc
   <summary>
     <strong className='text-lg'>
       _get_value
-      <ArgumentExtra>(Dataset, int) -> Data_Out</ArgumentExtra>
+      <ArgumentExtra>(Dataset, int) -&gt; Data_Out</ArgumentExtra>
       <ArgumentExtra>(default: None)</ArgumentExtra>
     </strong>
   </summary>
@@ -396,7 +396,7 @@ This will cover the required and optional arguments initializing a parallel proc
   <summary>
     <strong className='text-lg'>
       _length
-      <ArgumentExtra>int | (Dataset) -> Data_In</ArgumentExtra>
+      <ArgumentExtra>int | (Dataset) -&gt; Data_In</ArgumentExtra>
       <ArgumentExtra>(default: dataset.__len__)</ArgumentExtra>
     </strong>
   </summary>
@@ -498,7 +498,7 @@ These are methods of `thread.ParallelProcessing` class.
   <summary>
     <strong className='text-lg'>
       start
-      <ArgumentExtra>() -> None</ArgumentExtra>
+      <ArgumentExtra>() -&gt; None</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -523,7 +523,7 @@ These are methods of `thread.ParallelProcessing` class.
   <summary>
     <strong className='text-lg'>
       is_alive
-      <ArgumentExtra>() -> bool</ArgumentExtra>
+      <ArgumentExtra>() -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -548,7 +548,7 @@ These are methods of `thread.ParallelProcessing` class.
   <summary>
     <strong className='text-lg'>
       get_return_values
-      <ArgumentExtra>() -> List[Data_Out]</ArgumentExtra>
+      <ArgumentExtra>() -&gt; List[Data_Out]</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -574,7 +574,7 @@ These are methods of `thread.ParallelProcessing` class.
   <summary>
     <strong className='text-lg'>
       join
-      <ArgumentExtra>(timeout: float = None) -> bool</ArgumentExtra>
+      <ArgumentExtra>(timeout: float = None) -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
@@ -602,7 +602,7 @@ These are methods of `thread.ParallelProcessing` class.
   <summary>
     <strong className='text-lg'>
       kill
-      <ArgumentExtra>(yielding: bool = False, timeout: float = 5) -> bool</ArgumentExtra>
+      <ArgumentExtra>(yielding: bool = False, timeout: float = 5) -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
