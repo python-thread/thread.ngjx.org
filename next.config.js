@@ -17,8 +17,8 @@ const NextConfig = {
   },
   redirects: async () => ([
     {
-      source: '/docs/v1.:major.:minor/:slug*',
-      destination: '/docs/latest/:slug*',
+      source: '/docs/v2:any?/:path*',
+      destination: '/docs/latest/:path*',
       permanent: false
     },
     {
