@@ -20,6 +20,11 @@ const NextConfig = {
       source: '/docs/v1.:major.:minor/:slug*',
       destination: '/docs/latest/:slug*',
       permanent: false
+    },
+    {
+      source: '/github/v:major.:minor.:patch/:path*',
+      destination: 'https://github.com/python-thread/thread/releases/tag/v:major.:minor.:patch',
+      permanent: true
     }
   ])
 }
