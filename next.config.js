@@ -22,6 +22,11 @@ const NextConfig = {
       permanent: false
     },
     {
+      source: '/docs/v:major.:minor.:patch/:path*',
+      destination: '/docs/v:major/:path*',
+      permanent: true
+    },
+    {
       source: '/github/v:major.:minor.:patch/:path*',
       destination: 'https://github.com/python-thread/thread/releases/tag/v:major.:minor.:patch',
       permanent: true
