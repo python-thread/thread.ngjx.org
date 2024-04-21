@@ -23,6 +23,10 @@
         "title": "1.1.1 Latest Release",
         "href": "/docs/latest"
       },
+      "v1-release": {
+        "title": "1.0.1 Release",
+        "href": "/docs/v1"
+      },
       "all-releases": {
         "title": "All Releases",
         "href": "/docs"
