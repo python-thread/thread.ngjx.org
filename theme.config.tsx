@@ -28,7 +28,7 @@ const Head = () => {
   const { title } = useConfig()
   const { route } = useRouter()
 
-  const pageTitle = route === '/' || !title ? 'Thread v1.1.1' : `${title} | Thread v1.1.1`
+  const pageTitle = route === '/' || !title ? 'Thread v2.0.0' : `${title} | Thread v2.0.0`
   const socialImage = 'https://thread.ngjx.org/socialcard-white.jpg'
 
   return (
@@ -84,7 +84,7 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter()
     if (asPath !== '/') {
       return {
-        titleTemplate: '%s | Thread v1.1.1',
+        titleTemplate: '%s | Thread v2.0.0',
       }
     }
   },

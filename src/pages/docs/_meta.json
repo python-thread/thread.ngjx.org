@@ -10,5 +10,6 @@
       "timestamp": false
     }
   },
-  "latest": "v1.1.1 Latest"
+  "latest": "v2.0.0 Latest",
+  "v1": "v1.1.1"
 }

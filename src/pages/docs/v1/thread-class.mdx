@@ -544,12 +544,14 @@ These are methods of `thread.Thread` class.
   <summary>
     <strong className='text-lg'>
       join
-      <ArgumentExtra>(timeout: float = None) -&gt; None</ArgumentExtra>
+      <ArgumentExtra>(timeout: float = None) -&gt; bool</ArgumentExtra>
     </strong>
   </summary>
   <ArgumentBody>
     This halts the current thread execution until the thread completes or exceeds the timeout.
+
     A None value for timeout will have the same effect as passing `float("inf")` as a timeout.
+    The boolean returned by `Thread.join()` is `True` if the thread completed within the timeout and `False` if otherwise.
 
     Simply invoke `Thread.join()` on a thread object.
     ```py

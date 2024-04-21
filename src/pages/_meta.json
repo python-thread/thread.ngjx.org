@@ -14,14 +14,13 @@
     "title": "Documentation",
     "type": "menu",
     "items": {
-      "development-progress": {
-        "title": "1.X.X Development",
-        "href": "https://github.com/python-thread/thread",
-        "newWindow": true
-      },
       "latest-release": {
-        "title": "1.1.1 Latest Release",
+        "title": "2.0.0 Latest Release",
         "href": "/docs/latest"
+      },
+      "v1-release": {
+        "title": "1.0.1 Release",
+        "href": "/docs/v1"
       },
       "all-releases": {
         "title": "All Releases",

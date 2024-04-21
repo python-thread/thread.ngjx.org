@@ -17,9 +17,19 @@ const NextConfig = {
   },
   redirects: async () => ([
     {
-      source: '/docs/v1.:major.:minor/:slug*',
-      destination: '/docs/latest/:slug*',
+      source: '/docs/v2:any?/:path*',
+      destination: '/docs/latest/:path*',
       permanent: false
+    },
+    {
+      source: '/docs/v:major.:minor.:patch/:path*',
+      destination: '/docs/v:major/:path*',
+      permanent: true
+    },
+    {
+      source: '/github/v:major.:minor.:patch/:path*',
+      destination: 'https://github.com/python-thread/thread/releases/tag/v:major.:minor.:patch',
+      permanent: true
     }
   ])
 }
