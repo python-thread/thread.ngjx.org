@@ -40,13 +40,16 @@ export function Text({ children, className }) {return <p className={cn('text-sm 
   This is a list of all the available releases.
 
   <div className='flex flex-wrap items-center justify-center gap-8 mt-12'>
-    <VersionLink className='w-56 flex-col items-start' href='https://github.com/python-thread/thread'>
+    <VersionLink className='w-56 flex-col justify-between items-start' href='/docs/v2'>
       <div className='flex flex-row items-center gap-2'>
         <ExternalLinkIcon className='w-6 h-6' />
-        <Text className='text-lg font-bold'>Development</Text>
+        <Text className='text-lg font-bold'>Latest v2.0.0</Text>
       </div>
-      <Text className='text-sm font-light text-left ml-4'>This is the latest ***in-development*** branch. This may be unstable.</Text>
-      <StatusBadge variant='dev' className='self-end mt-auto mb-1'>dev</StatusBadge>
+      <Text className='text-sm font-light text-left ml-4'>This is the latest ***stable*** release.</Text>
+      <div className='flex flex-row self-end mt-auto mb-1 gap-2'>
+        <StatusBadge variant='latest'>latest</StatusBadge>
+        <StatusBadge variant='stable'>stable</StatusBadge>
+      </div>
     </VersionLink>
     <VersionLink className='w-56 flex-col justify-between items-start' href='/docs/latest'>
       <div className='flex flex-row items-center gap-2'>
